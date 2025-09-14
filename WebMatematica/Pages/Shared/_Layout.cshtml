@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - WebMatematica</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body class="bg-light">
+
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-white shadow-sm mb-4">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-page="/Index"></a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main content -->
+    <main role="main" class="container">
+        @RenderBody()
+    </main>
+
+    <!-- Scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

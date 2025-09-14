@@ -1,0 +1,80 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Práctica de Multiplicaciones";
+}
+
+
+
+<div class="container d-flex justify-content-center" style="margin-top: auto;">
+    <div class="card p-4 shadow-lg text-center" style="max-width: 450px; width: 350%;">
+        <h1 class="mb-4">Práctica de Multiplicaciones</h1>
+
+        <div id="multiplicacion" style="font-size: 2rem; font-weight: bold; margin-bottom: 20px;">
+            Cargando...
+        </div>
+
+        <input type="number" id="respuesta" class="form-control mb-3 text-center" placeholder="Escribe tu respuesta">
+        <button id="enviar" class="btn btn-primary w-100 mb-2">Enviar</button>
+
+        <div id="mensaje" style="min-height: 30px; font-size: 1.2rem;"></div>
+    </div>
+</div>
+<script>
+    // URL base de tu API
+    const apiBase = 'https://localhost:7131';
+    let numero1, numero2;
+
+    // Función para obtener multiplicación de la API
+    async function obtenerMultiplicacion() {
+        try {
+            const res = await fetch(`${apiBase}/api/ControladorMatematicas/random`);
+            const data = await res.json();
+            numero1 = data.numero1;
+            numero2 = data.numero2;
+            document.getElementById('multiplicacion').textContent = `${numero1} x ${numero2}`;
+            document.getElementById('respuesta').value = '';
+            document.getElementById('respuesta').focus();
+            document.getElementById('mensaje').textContent = '';
+        } catch (err) {
+            document.getElementById('mensaje').textContent = 'Error al obtener multiplicación.';
+            console.error(err);
+        }
+    }
+
+    // Función para enviar respuesta a la API
+    async function enviarRespuesta() {
+        const respuestaUsuario = parseInt(document.getElementById('respuesta').value);
+        if (isNaN(respuestaUsuario)) return;
+
+        try {
+            const res = await fetch(`${apiBase}/api/ControladorMatematicas/pregunta`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ numero1, numero2, respuestaUsuario })
+            });
+
+            const data = await res.json();
+            if (data.correcto) {
+                document.getElementById('mensaje').textContent = "✅ Correcto!";
+                setTimeout(obtenerMultiplicacion, 1000); // siguiente multiplicación después de 1s
+            } else {
+                document.getElementById('mensaje').textContent = "❌ Incorrecto, intenta otra vez.";
+                document.getElementById('respuesta').value = '';
+                document.getElementById('respuesta').focus();
+            }
+        } catch (err) {
+            document.getElementById('mensaje').textContent = 'Error al validar respuesta.';
+            console.error(err);
+        }
+    }
+
+    // Eventos
+    document.getElementById('enviar').addEventListener('click', enviarRespuesta);
+    document.getElementById('respuesta').addEventListener('keypress', function(e){
+        if(e.key === 'Enter') enviarRespuesta();
+    });
+
+    // Cargar primera multiplicación al iniciar
+    obtenerMultiplicacion();
+</script>
