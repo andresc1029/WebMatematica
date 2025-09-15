@@ -31,12 +31,16 @@
         try {
             const res = await fetch(`${apiBase}/api/ControladorMatematicas/random`);
             const data = await res.json();
+            const vaciarMensaje = "";
             numero1 = data.numero1;
             numero2 = data.numero2;
             document.getElementById('multiplicacion').textContent = `${numero1} x ${numero2}`;
             document.getElementById('respuesta').value = '';
             document.getElementById('respuesta').focus();
-            document.getElementById('mensaje').textContent = '';
+
+            setTimeout(()=>{
+                document.getElementById('mensaje').textContent = '';
+            }, 900);
         } catch (err) {
             document.getElementById('mensaje').textContent = 'Error al obtener multiplicación.';
             console.error(err);
@@ -46,6 +50,10 @@
     // Función para enviar respuesta a la API
     async function enviarRespuesta() {
         const respuestaUsuario = parseInt(document.getElementById('respuesta').value);
+        const input = document.getElementById('respuesta');
+        const enviar = document.getElementById('enviar')
+        enviar.ariaDisabled
+        input.ariaDisabled = true;
         if (isNaN(respuestaUsuario)) return;
 
         try {
@@ -58,11 +66,14 @@
 
             const data = await res.json();
             if (data.correcto) {
+                input.ariaDisabled = false;
                 document.getElementById('racha').textContent = `🔥 Racha: ${data.racha}`;
                 document.getElementById('mensaje').textContent = `✅ Correcto!`;
-           
-                setTimeout(obtenerMultiplicacion, 1000); // siguiente multiplicación después de 1s
+
+                setTimeout(obtenerMultiplicacion,enviar.ariaDisabled = false, 3000); // 1sg antes de mostrar una siguiente informacion
+                
             } else {
+                input.ariaDisabled = false;
                 document.getElementById('mensaje').textContent = `❌ Incorrecto, tu racha sera reiniciada`;
                 document.getElementById('respuesta').value = '';
                 document.getElementById('respuesta').focus();
