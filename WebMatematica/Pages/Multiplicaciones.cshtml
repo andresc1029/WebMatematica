@@ -16,32 +16,40 @@
 
         <input type="number" id="respuesta" class="form-control mb-3 text-center" placeholder="Escribe tu respuesta">
         <button id="enviar" class="btn btn-primary w-100 mb-2">Enviar</button>
+        <button id="modoTiempo" class="btn btn-outline-warning w-100 mb-2">Modo con tiempo</button>
 
+        <div id="tiempoRestante" style="font-size: 1.1rem; margin-bottom: 10px;"></div>
         <div id="racha" style="margin-inline: 30px; font-size: 1.2rem;"></div>
         <div id="mensaje" style="min-height: 30px; font-size: 1.2rem;"></div>
     </div>
 </div>
 <script>
-    // URL base de tu API
     const apiBase = 'https://localhost:7131';
     let numero1, numero2;
+    let modoTiempo = false;
+    let tiempo = 15; 
+    let timerId;
+    let tiempoRestante = tiempo;
 
-    // Función para obtener multiplicación de la API
     async function obtenerMultiplicacion() {
         try {
             const res = await fetch(`${apiBase}/api/ControladorMatematicas/random`);
             const data = await res.json();
-            
 
             numero1 = data.numero1;
             numero2 = data.numero2;
             document.getElementById('multiplicacion').textContent = `${numero1} x ${numero2}`;
             document.getElementById('respuesta').value = '';
             document.getElementById('respuesta').focus();
+            document.getElementById('mensaje').textContent = '';
+            document.getElementById('tiempoRestante').textContent = '';
 
-            setTimeout(()=>{
-                document.getElementById('mensaje').textContent = '';
-            }, 900);
+            if (modoTiempo) {
+                // El tiempo 
+                iniciarTemporizador();
+            } else {
+                detenerTemporizador();
+            }
 
         } catch (err) {
             document.getElementById('mensaje').textContent = 'Error al obtener multiplicación.';
@@ -49,34 +57,45 @@
         }
     }
 
-    // Función para enviar respuesta a la API
     async function enviarRespuesta() {
         const respuestaUsuario = parseInt(document.getElementById('respuesta').value);
         const input = document.getElementById('respuesta');
-        const enviar = document.getElementById('enviar')
-        enviar.ariaDisabled
         input.ariaDisabled = true;
         if (isNaN(respuestaUsuario)) return;
+
+        detenerTemporizador();
 
         try {
             const res = await fetch(`${apiBase}/api/ControladorMatematicas/pregunta`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ numero1, numero2, respuestaUsuario })
+                body: JSON.stringify({ numero1, numero2, respuestaUsuario, ModoConTiempo: modoTiempo })
             });
 
-
             const data = await res.json();
+
+            // Actualiza según la racha
+            if (modoTiempo) {
+                tiempo = data.tiempoInicio ?? 15;
+                tiempoRestante = data.tiempoUsuario ?? tiempo;
+                document.getElementById('tiempoRestante').textContent = `⏰ Tiempo: ${tiempoRestante}s`;
+            }
+
+            if (data.tiempoAgotado) {
+                document.getElementById('mensaje').textContent = '⏰ ¡Se acabó el tiempo!';
+                document.getElementById('racha').textContent = `🔥 Racha: ${data.racha}`;
+                setTimeout(obtenerMultiplicacion, 2000);
+                return;
+            }
+
             if (data.correcto) {
                 input.ariaDisabled = false;
                 document.getElementById('racha').textContent = `🔥 Racha: ${data.racha}`;
-                document.getElementById('mensaje').textContent = `✅ Correcto!`;
-
-                setTimeout(obtenerMultiplicacion,enviar.ariaDisabled = false, 3000); // 1sg antes de mostrar una siguiente informacion
-                
+                document.getElementById('mensaje').textContent = `✅ ¡Correcto!`;
+                setTimeout(obtenerMultiplicacion, 3000);
             } else {
                 input.ariaDisabled = false;
-                document.getElementById('mensaje').textContent = `❌ Incorrecto, tu racha sera reiniciada`;
+                document.getElementById('mensaje').textContent = `❌ Incorrecto, tu racha será reiniciada`;
                 document.getElementById('respuesta').value = '';
                 document.getElementById('respuesta').focus();
             }
@@ -86,12 +105,39 @@
         }
     }
 
+    // Temporizador
+    function iniciarTemporizador() {
+        document.getElementById('tiempoRestante').textContent = `⏰ Tiempo: ${tiempoRestante}s`;
+        timerId = setInterval(() => {
+            tiempoRestante--;
+            document.getElementById('tiempoRestante').textContent = `⏰ Tiempo: ${tiempoRestante}s`;
+            if (tiempoRestante <= 0) {
+                clearInterval(timerId);
+                document.getElementById('mensaje').textContent = '⏰ ¡Se acabó el tiempo!';
+                document.getElementById('respuesta').ariaDisabled = false;
+                enviarRespuesta();
+            }
+        }, 1000);
+    }
+
+    function detenerTemporizador() {
+        clearInterval(timerId);
+        document.getElementById('tiempoRestante').textContent = '';
+    }
+
     // Eventos
     document.getElementById('enviar').addEventListener('click', enviarRespuesta);
     document.getElementById('respuesta').addEventListener('keypress', function(e){
         if(e.key === 'Enter') enviarRespuesta();
     });
 
-    // Cargar primera multiplicación al iniciar
+    document.getElementById('modoTiempo').addEventListener('click', function() {
+        modoTiempo = !modoTiempo;
+        this.classList.toggle('btn-warning', modoTiempo);
+        this.classList.toggle('btn-outline-warning', !modoTiempo);
+        this.textContent = modoTiempo ? 'Modo con tiempo: activo' : 'Modo con tiempo';
+        obtenerMultiplicacion();
+    });
+
     obtenerMultiplicacion();
 </script>
