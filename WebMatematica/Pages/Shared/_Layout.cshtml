@@ -1,5 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var isIndex = ViewData["Title"]?.ToString() == "Inicio";
+}
+<!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -7,9 +11,25 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
-<body>
 
-    
+<body>
+    @if (!isIndex)
+    {
+    <button class="btn btn-dark sidebar-toggle" id="openSidebarBtn">
+        ☰ Menú
+    </button>
+    }
+
+    <!-- Menú desplegable -->
+    <div id="sidebar" class="sidebar">
+        <button class="close-btn" id="closeSidebarBtn">&times;</button>
+        <ul class="list-unstyled mt-4">
+            <li><a asp-page="/Index" class="sidebar-link">Inicio</a></li>
+            <li><a asp-page="/Multiplicaciones" class="sidebar-link">Multiplicaciones</a></li>
+            <li><a asp-page="/Pronto" class="sidebar-link">Pronto</a></li>
+        </ul>
+    </div>
+
     <header>
         <nav class="navbar navbar-expand-sm shadow-sm mb-4" style="background-color: #111;">
             <div class="container">
@@ -18,7 +38,6 @@
         </nav>
     </header>
 
-  
     <main role="main" class="container">
         @RenderBody()
     </main>
@@ -26,6 +45,17 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        $(function () {
+            $('#openSidebarBtn').on('click', function () {
+                $('#sidebar').addClass('active');
+            });
+            $('#closeSidebarBtn').on('click', function () {
+                $('#sidebar').removeClass('active');
+            });
+        });
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>
