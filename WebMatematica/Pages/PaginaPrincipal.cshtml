@@ -1,0 +1,46 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Inicio";
+}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-8">
+        <div class="card shadow-lg text-center" style="background: linear-gradient(135deg, #222 80%, #333 100%);">
+            <div class="card-body">
+                <h1 class="display-4 mb-2">WebMatematica</h1>
+                <h5 class="text-secondary mb-4">Desafía tu mente, domina la lógica y las matemáticas</h5>
+                <p class="lead mb-4">
+                    Bienvenido a la plataforma para potenciar tu <strong>razonamiento lógico-matemático</strong>.
+                    Aquí encontrarás ejercicios, desafíos y recursos para mejorar tus habilidades en matemáticas y lógica.
+                </p>
+                <ul class="list-unstyled mb-4">
+                    <li>✔ Ejercicios interactivos</li>
+                    <li>✔ Retos de lógica y razonamiento</li>
+                </ul>
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-4 mb-2">
+                        <a asp-page="/Multiplicaciones" class="btn btn-outline-light btn-lg w-100">
+                            Multiplicaciones
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-4 mb-2">
+                        <a asp-page="/LogicaMatematica" class="btn btn-outline-light btn-lg w-100">
+                            Lógica
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-4 mb-2">
+                        <a asp-page="/Pronto" class="btn btn-outline-light btn-lg w-100">
+                            Más ejercicios
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-4 text-center">
+            <small class="text-secondary">
+                Explora, aprende y reta tu mente!
+            </small>
+        </div>
+    </div>
+</div>

@@ -1,28 +1,55 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.ComponentModel.DataAnnotations;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 
 namespace WebMatematica.Pages
 {
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    [IgnoreAntiforgeryToken]
-    public class ErrorModel : PageModel
+    public class loginModel : PageModel
     {
-        public string? RequestId { get; set; }
+        [BindProperty]
+        [Required]
+        public string Usuario { get; set; }
 
-        public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+        [BindProperty]
+        [Required]
+        public string Contraseña { get; set; }
 
-        private readonly ILogger<ErrorModel> _logger;
-
-        public ErrorModel(ILogger<ErrorModel> logger)
+        public List<(string Nombre, string Contraseña)> ListaUsuarios = new List<(string, string)>
         {
-            _logger = logger;
-        }
+           ("Kevin", "1234"),
+        };
+
+
 
         public void OnGet()
         {
-            RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+           
         }
-    }
 
+        public IActionResult OnPost()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            string usuarioIngresado = Usuario;
+            string contraseñaIngresada = Contraseña;
+
+            var usuarioValido = ListaUsuarios.Any(u =>
+        u.Nombre == usuarioIngresado && u.Contraseña == contraseñaIngresada);
+
+            if (usuarioValido)
+            {
+                return RedirectToPage("/PaginaPrincipal");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Usuario o contraseña incorrectos");
+                return Page();
+            }
+        } 
+    }
 }

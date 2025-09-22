@@ -1,0 +1,15 @@
+﻿.logic-btn {
+    background: linear-gradient(135deg, #444 0%, #555 100%);
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+    .logic-btn:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        background: linear-gradient(135deg, #666 0%, #777 100%);
+        color: #fff;
+    }

@@ -5,7 +5,7 @@
 }
 
 
-
+    
 <div class="container d-flex justify-content-center" style="margin-top: 100px;">
     <div class="card p-4 shadow-lg text-center" style="max-width: 450px; width: 350%;">
         <h1 class="mb-4">Solucione</h1>
@@ -16,7 +16,7 @@
 
         <input type="number" id="respuesta" class="form-control mb-3 text-center" placeholder="Escribe tu respuesta">
         <button id="enviar" class="btn btn-primary w-100 mb-2">Enviar</button>
-        <button id="modoTiempo" class="btn btn-outline-warning w-100 mb-2">Modo con tiempo</button>
+        <button id="modoTiempo" class="btn btn-outline-warning w-100 mb-2">¿Tiempo?</button>
 
         <div id="tiempoRestante" style="font-size: 1.1rem; margin-bottom: 10px;"></div>
         <div id="racha" style="margin-inline: 30px; font-size: 1.2rem;"></div>
@@ -30,6 +30,7 @@
     let tiempo = 15; 
     let timerId;
     let tiempoRestante = tiempo;
+    const enviar = document.getElementById('enviar');
 
     async function obtenerMultiplicacion() {
         try {
@@ -43,9 +44,9 @@
             document.getElementById('respuesta').focus();
             document.getElementById('mensaje').textContent = '';
             document.getElementById('tiempoRestante').textContent = '';
+            enviar.disabled = false; // Habilita el botón al cargar nueva pregunta
 
             if (modoTiempo) {
-                // El tiempo 
                 iniciarTemporizador();
             } else {
                 detenerTemporizador();
@@ -58,10 +59,16 @@
     }
 
     async function enviarRespuesta() {
+        if (enviar.disabled) return; // Evita múltiples envíos
+        enviar.disabled = true; // Deshabilita el botón inmediatamente
+
         const respuestaUsuario = parseInt(document.getElementById('respuesta').value);
         const input = document.getElementById('respuesta');
         input.ariaDisabled = true;
-        if (isNaN(respuestaUsuario)) return;
+        if (isNaN(respuestaUsuario)) {
+            enviar.disabled = false;
+            return;
+        }
 
         detenerTemporizador();
 
@@ -74,7 +81,6 @@
 
             const data = await res.json();
 
-            // Actualiza según la racha
             if (modoTiempo) {
                 tiempo = data.tiempoInicio ?? 15;
                 tiempoRestante = data.tiempoUsuario ?? tiempo;
@@ -89,18 +95,19 @@
             }
 
             if (data.correcto) {
-                input.ariaDisabled = false;
                 document.getElementById('racha').textContent = `🔥 Racha: ${data.racha}`;
                 document.getElementById('mensaje').textContent = `✅ ¡Correcto!`;
-                setTimeout(obtenerMultiplicacion, 3000);
+                setTimeout(obtenerMultiplicacion, 1000);
             } else {
                 input.ariaDisabled = false;
                 document.getElementById('mensaje').textContent = `❌ Incorrecto, tu racha será reiniciada`;
                 document.getElementById('respuesta').value = '';
                 document.getElementById('respuesta').focus();
+                enviar.disabled = false; // Permite volver a intentar
             }
         } catch (err) {
             document.getElementById('mensaje').textContent = 'Error al validar respuesta.';
+            enviar.disabled = false;
             console.error(err);
         }
     }
@@ -126,7 +133,7 @@
     }
 
     // Eventos
-    document.getElementById('enviar').addEventListener('click', enviarRespuesta);
+    enviar.addEventListener('click', enviarRespuesta);
     document.getElementById('respuesta').addEventListener('keypress', function(e){
         if(e.key === 'Enter') enviarRespuesta();
     });
@@ -135,7 +142,7 @@
         modoTiempo = !modoTiempo;
         this.classList.toggle('btn-warning', modoTiempo);
         this.classList.toggle('btn-outline-warning', !modoTiempo);
-        this.textContent = modoTiempo ? 'Modo con tiempo: activo' : 'Modo con tiempo';
+        this.textContent = modoTiempo ? 'tiempo : activo' : '¿Tiempo?';
         obtenerMultiplicacion();
     });
 
