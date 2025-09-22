@@ -35,7 +35,7 @@ body {
         display: block;
         width: 100%; 
         text-align: center; 
-        color: #aaa; /
+        color: #aaa; 
         margin: 1rem 0 0.5rem 0; 
         font-size: 0.85rem;
         letter-spacing: 1px; 
@@ -82,7 +82,7 @@ body {
 
 /* Botón Entrar */
 .btn-login {
-    display: block; /
+    display: block;
     width: 100%; 
     background: linear-gradient(90deg, #ff6b6b, #f94d6a);
     border: none;
