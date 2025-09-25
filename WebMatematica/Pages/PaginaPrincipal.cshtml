@@ -1,46 +1,67 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Inicio";
+    ViewData["Title"] = "";
 }
 
-<div class="row justify-content-center mt-5">
-    <div class="col-md-8">
-        <div class="card shadow-lg text-center" style="background: linear-gradient(135deg, #222 80%, #333 100%);">
-            <div class="card-body">
-                <h1 class="display-4 mb-2">WebMatematica</h1>
-                <h5 class="text-secondary mb-4">Desafía tu mente, domina la lógica y las matemáticas</h5>
-                <p class="lead mb-4">
-                    Bienvenido a la plataforma para potenciar tu <strong>razonamiento lógico-matemático</strong>.
-                    Aquí encontrarás ejercicios, desafíos y recursos para mejorar tus habilidades en matemáticas y lógica.
-                </p>
-                <ul class="list-unstyled mb-4">
-                    <li>✔ Ejercicios interactivos</li>
-                    <li>✔ Retos de lógica y razonamiento</li>
-                </ul>
-                <div class="row justify-content-center">
-                    <div class="col-12 col-md-4 mb-2">
-                        <a asp-page="/Multiplicaciones" class="btn btn-outline-light btn-lg w-100">
-                            Multiplicaciones
-                        </a>
-                    </div>
-                    <div class="col-12 col-md-4 mb-2">
-                        <a asp-page="/LogicaMatematica" class="btn btn-outline-light btn-lg w-100">
-                            Lógica
-                        </a>
-                    </div>
-                    <div class="col-12 col-md-4 mb-2">
-                        <a asp-page="/Pronto" class="btn btn-outline-light btn-lg w-100">
-                            Más ejercicios
-                        </a>
-                    </div>
-                </div>
+<!-- Sección Inicio -->
+<section id="inicio" class="hero-section">
+    <div class="hero-container">
+        <!-- Texto a la izquierda -->
+        <div class="hero-text">
+            <h1 class="hero-title">La cupula</h1>
+            <h5 class="hero-subtitle">Desafía tu mente, domina la lógica y las matemáticas</h5>
+            <p class="hero-lead">
+                Bienvenido a la plataforma para potenciar tu
+                <strong>razonamiento lógico-matemático</strong>.
+                Aquí encontrarás ejercicios, desafíos y recursos para mejorar tus habilidades.
+            </p>
+            <ul class="feature-list">
+                <li>✔ Ejercicios interactivos</li>
+                <li>✔ Retos de lógica y razonamiento</li>
+            </ul>
+            <div class="hero-buttons">
+                <a href="/Multiplicaciones" class="btn-primary">Multiplicaciones</a>
+                <a href="#logica" class="btn-outline-primary">Lógica</a>
+                <a href="/Pronto" class="btn-outline-primary">Más ejercicios</a>
             </div>
         </div>
-        <div class="mt-4 text-center">
-            <small class="text-secondary">
-                Explora, aprende y reta tu mente!
-            </small>
+
+        <!-- Imagen a la derecha -->
+        <div class="hero-image">
+            <img src="~/images/math-illustration.svg" alt="Matemáticas" />
         </div>
     </div>
-</div>
+</section>
+
+<!-- Sección Ejercicios de Lógica -->
+<section id="logica" class="logic-section">
+    <div class="logic-container">
+        <!-- Imagen izquierda -->
+        <div class="logic-image">
+            <img src="~/images/logic-illustration.svg" alt="Lógica" />
+        </div>
+        <!-- Texto derecha -->
+        <div class="logic-text">
+            <h2 class="logic-title">Ejercicios de Lógica</h2>
+            <h5 class="logic-subtitle">Pon a prueba tu razonamiento, encuentra patrones</h5>
+            <p class="logic-lead">
+                Aquí encontrarás diferentes tipos de ejercicios para mejorar tu lógica.
+            </p>
+            <ul class="feature-list">
+                <li>✔ Secuencias y patrones</li>
+                <li>✔ Problemas con condiciones</li>
+                <li>✔ Retos visuales</li>
+            </ul>
+            <div class="logic-buttons">
+                <a href="/SecuenciasNumericas" class="btn-dark">Secuencias Numéricas</a>
+                <a href="/ProblemasCondiciones" class="btn-dark">Problemas con Condiciones</a>
+                <a href="/PatronesVisuales" class="btn-dark">Patrones Visuales</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<link rel="stylesheet" href="~/css/PaginaPrincipal.css" />
+<script src="~/js/logica.js"></script>

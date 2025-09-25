@@ -7,35 +7,27 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>@ViewData["Title"] - WebMatematica</title>
+    <title>@ViewData["Title"]  Inicio </title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <script src="~/js/Multiplicaciones.js"></script>
 </head>
 
 <body>
-    @if (!isIndex)
-    {
-    <button class="btn btn-dark sidebar-toggle" id="openSidebarBtn">
-        ☰ Menú
-    </button>
-    }
-
-    <!-- Menú desplegable -->
-    <div id="sidebar" class="sidebar">
-        <button class="close-btn" id="closeSidebarBtn">&times;</button>
-        <ul class="list-unstyled mt-4">
-            <li><a asp-page="/PaginaPrincipal" class="sidebar-link">Inicio</a></li>
-            <li><a asp-page="/Multiplicaciones" class="sidebar-link">Multiplicaciones</a></li>
-            <li><a asp-page="/Pronto" class="sidebar-link">Cerrar Seccion</a></li>
-        </ul>
-    </div>
-
     <header>
-        <nav class="navbar navbar-expand-sm shadow-sm mb-4" style="background-color: #111;">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index"></a>
-            </div>
-        </nav>
+        <div class="nav-container">
+            <a class="logo" asp-area="" asp-page="/Index">Hola, ...</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a asp-page="/PaginaPrincipal">Inicio</a></li>
+                    <li><a asp-page="/Multiplicaciones">Multiplicaciones</a></li>
+                    <li><a asp-page="/Pronto">Cerrar Sesión</a></li>
+                </ul>
+                <button class="nav-toggle" aria-label="Abrir menú">
+                    ☰
+                </button>
+            </nav>
+        </div>
     </header>
 
     <main role="main" class="container">
@@ -45,17 +37,6 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script>
-        $(function () {
-            $('#openSidebarBtn').on('click', function () {
-                $('#sidebar').addClass('active');
-            });
-            $('#closeSidebarBtn').on('click', function () {
-                $('#sidebar').removeClass('active');
-            });
-        });
-    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
-
 </html>

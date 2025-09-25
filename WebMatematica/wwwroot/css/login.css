@@ -1,10 +1,14 @@
 ﻿
+html{
+    background-color: #111111;
+}
+
 body {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, #222 80%, #333 100%);
+    background-color: #111111;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     overflow: hidden;
 }
@@ -16,7 +20,7 @@ body {
     padding: 3rem 2rem;
     width: 80%;
     max-width: 450px;
-    margin: auto; 
+    margin: auto;
     box-shadow: 0 10px 25px rgba(0,0,0,0.5);
     color: #fff;
     transition: transform 0.3s ease;
@@ -83,38 +87,40 @@ body {
 /* Botón Entrar */
 .btn-login {
     display: block;
-    width: 100%; 
-    background: linear-gradient(90deg, #ff6b6b, #f94d6a);
+    width: 100%;
+    background: #0d6efd;
+    color: #fff;
     border: none;
     transition: 0.3s ease;
     height: 40px;
     font-size: 1.02rem;
     border-radius: 8px;
-    margin-bottom: 0.5rem; 
+    margin-bottom: 0.5rem;
+    cursor: pointer;
 }
 
     .btn-login:hover {
-        background: linear-gradient(90deg, #f94d6a, #ff6b6b);
+        background: #0d6efd;
     }
 
 /* Botón Registrar */
 .btn-register {
     display: block;
-    width: 100%; 
-    background: linear-gradient(90deg, #4a90e2, #357ABD);
+    width: 100%;
+    background: #0d6efd;
     color: #fff;
-    border: none;
+    border: #0d6efd;
     padding: 0.55rem 0;
     font-size: 1.02rem;
     border-radius: 8px;
     transition: 0.3s ease;
     text-decoration: none;
-    margin-bottom: 0.2rem; 
+    margin-bottom: 0.2rem;
     text-align: center;
 }
 
     .btn-register:hover {
-        background: linear-gradient(90deg, #357ABD, #4a90e2);
+        background: #0d6efd;
     }
 
 /* Enlace Olvidaste contraseña */
@@ -123,17 +129,17 @@ body {
     display: block;
     margin: 0 auto;
     text-align: center;
-    margin-top: 0.15rem; 
+    margin-top: 0.15rem;
     font-size: 0.9rem;
 }
 
 /* Estilo  de enlaces */
 a {
-    color: #ff6b6b;
+    color: #0d6efd;
     text-decoration: none;
 }
 
     a:hover {
-        color: #f94d6a;
+        color: #fff;
         text-decoration: underline;
     }

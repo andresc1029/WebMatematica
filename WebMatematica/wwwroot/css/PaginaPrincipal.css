@@ -1,0 +1,159 @@
+﻿/* ===== Hero Section ===== */
+.hero-section {
+    background: #111111;
+    color: #fff;
+    padding: 5rem 2rem;
+    transform: scale(0.89);
+}
+
+
+.hero-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.hero-text {
+    flex: 1 1 400px;
+    max-width: 60ch;
+}
+
+.hero-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    color: #bbbbbb;
+    margin-bottom: 1.5rem;
+}
+
+.hero-lead {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.feature-list {
+    margin-bottom: 1.5rem;
+    list-style: none;
+    padding-left: 0;
+}
+
+    .feature-list li {
+        margin-bottom: 0.5rem;
+    }
+
+.hero-buttons a {
+    display: inline-block;
+    margin-right: 1rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+    .btn-primary:hover {
+        background-color: #0b5ed7;
+    }
+
+.btn-outline-primary {
+    border: 2px solid #0d6efd;
+    color: #0d6efd;
+    background: transparent;
+}
+
+    .btn-outline-primary:hover {
+        background: #0d6efd;
+        color: #fff;
+    }
+
+/* Hero imagen */
+.hero-image img {
+    max-width: 100%;
+    display: block;
+    margin: auto;
+}
+
+/* ===== Logic Section ===== */
+.logic-section {
+    background: #111111;
+    padding: 6rem 2rem;
+    margin-top: 15px;
+    transform: scale(0.89);
+}
+
+.logic-container {
+    display: flex;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.logic-image {
+    flex: 1 1 400px;
+
+}
+
+.logic-text {
+    max-width: 90ch;
+    flex: 1 1 400px; 
+    max-width: 90ch;
+    text-align: left;
+}
+
+.logic-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.logic-subtitle {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.logic-lead {
+    margin-bottom: 1.5rem;
+}
+
+.logic-buttons a {
+    display: inline-block;
+    margin-right: 1rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+.logic-buttons{
+    display: flex;
+}
+
+.btn-dark {
+    border: 2px solid #0d6efd;
+    color: #0d6efd;
+    background: transparent;
+}
+
+    .btn-dark:hover {
+        color:#0a58ca;
+        background-color:#0a58ca;
+    }
+
+/* Imagen */
+.logic-image img {
+    max-width: 100%;
+    display: block;
+    margin: auto;
+}
+
