@@ -4,12 +4,12 @@ Esta fue una pequeña pagina web que cree debido a mis falencias en la Universid
 Este proyecto es una aplicación web desarrollada en **ASP.NET Core (C#)** con una **API REST** 
 
 ## ✨ Funcionalidades actuales
-✅ Login de usuarios con JWT
-✅ Validación en tiempo real de respuestas matemáticas
-✅ Generación aleatoria de multiplicaciones desde la API
-✅ Persistencia en navegador con LocalStorage
-✅ Interfaz responsiva con Bootstrap
-✅ Feedback inmediato (Correcto ❌ / Incorrecto ✅)
+- Login de usuarios con JWT
+- Validación en tiempo real de respuestas matemáticas
+- Generación aleatoria de multiplicaciones desde la API
+- Persistencia en navegador con LocalStorage
+- Interfaz responsiva con Bootstrap
+- Feedback inmediato (Correcto ❌ / Incorrecto ✅)
 
 ## ⚡ Futuras mejoras
 - Niveles de dificultad.
