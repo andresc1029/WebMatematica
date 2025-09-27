@@ -15,7 +15,8 @@
 <body>
     <header>
         <div class="nav-container">
-            <a class="logo" asp-area="" asp-page="/Index">Hola, ...</a>
+            <a class="logo" asp-area="" asp-page="/Index"> 
+                Hola, <span id="nombre-usuario">Invitado</span></a>
             <nav>
                 <ul class="nav-links">
                     <li><a asp-page="/PaginaPrincipal">Inicio</a></li>
@@ -29,6 +30,7 @@
         </div>
     </header>
 
+
     <main role="main" class="container">
         @RenderBody()
     </main>
@@ -38,4 +40,24 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Obtener nombre desde localStorage
+        const nombre = localStorage.getItem("usuario");
+        if(nombre){
+            document.getElementById("nombre-usuario").textContent = nombre;
+        }
+
+        // Manejo de cerrar sesión
+        const logoutLink = document.querySelector('a[href="/Pronto"]');
+        if(logoutLink){
+            logoutLink.addEventListener("click", () => {
+                localStorage.removeItem("usuario");
+                localStorage.removeItem("token");
+            });
+        }
+    });
+</script>
 </html>
+
+

@@ -1,0 +1,184 @@
+﻿/* Reset rápido */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background-color: #111111;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    padding: 20px;
+}
+
+h1 {
+    color: #0d6efd;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.secuencia-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.numero {
+    background-color: #1a1a1a;
+    border: 2px solid #0d6efd;
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-size: 1.8rem;
+    min-width: 60px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+    .numero.animate {
+        background-color: #0d6efd;
+        color: #111111;
+        transform: scale(1.3);
+    }
+
+.input-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+input[type="number"] {
+    padding: 10px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    border: 2px solid #0d6efd;
+    background-color: #1a1a1a;
+    color: #fff;
+    width: 120px;
+    text-align: center;
+}
+
+button {
+    padding: 10px 25px;
+    background-color: #0d6efd;
+    color: #111111;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+    button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 10px #0d6efd;
+    }
+
+.resultado {
+    margin-top: 15px;
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.correcta {
+    animation: pop 0.5s forwards;
+}
+
+.incorrecta {
+    animation: shake 0.5s forwards;
+}
+
+/* Animación pop */
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.5);
+        text-shadow: 0 0 20px #0d6efd, 0 0 30px #0d6efd;
+    }
+
+    100% {
+        transform: scale(1);
+        text-shadow: 0 0 8px #0d6efd, 0 0 12px #0d6efd;
+    }
+}
+
+/* Animación shake */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    75% {
+        transform: translateX(-5px);
+    }
+}
+
+/* Partículas al acertar */
+.particula {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #0d6efd;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: particula 0.8s forwards;
+}
+
+@keyframes particula {
+    0% {
+        transform: translate(0,0) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(var(--x), var(--y)) scale(0.3);
+        opacity: 0;
+    }
+}
+
+
+/* Contenedor de racha */
+.racha-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #1a1a1a;
+    padding: 0.6rem 1rem;
+    border-radius: 12px;
+    box-shadow: 0 0 8px #0d6efd33, 0 0 12px #0d6efd22 inset;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #fff;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    cursor: default;
+}
+
+    /* Glow animado cuando aumenta la racha */
+    .racha-container.nueva-racha {
+        transform: scale(1.2);
+        box-shadow: 0 0 15px #0d6efd, 0 0 25px #0d6efd inset;
+    }
+
+    .racha-container span:first-child {
+        color: #0d6efd; /* 🔥 emoji label azul */
+    }

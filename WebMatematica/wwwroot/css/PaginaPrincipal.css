@@ -1,4 +1,9 @@
 ﻿/* ===== Hero Section ===== */
+body {
+    overflow: auto;
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+}
 .hero-section {
     background: #111111;
     color: #fff;
@@ -76,12 +81,19 @@
     }
 
 /* Hero imagen */
-.hero-image img {
-    max-width: 100%;
-    display: block;
-    margin: auto;
+
+.hero-image{
+    flex: 1 1 300px;
+    display:flex;
+    margin: 0;
+    padding: 20px;
+    float: right;
 }
 
+.imgWeb1{
+    max-width: 100%;
+
+}
 /* ===== Logic Section ===== */
 .logic-section {
     background: #111111;

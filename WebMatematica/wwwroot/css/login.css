@@ -15,15 +15,16 @@ body {
 
 /* Tarjeta de login */
 .login-card {
-    background-color: #1e1e1e;
+    background-color: #111111;
     border-radius: 12px;
     padding: 3rem 2rem;
     width: 80%;
     max-width: 450px;
     margin: auto;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 25px rgb(60 103 143 / 50%);
     color: #fff;
     transition: transform 0.3s ease;
+    transform: scale(0.89);
 }
 
     .login-card:hover {
@@ -52,6 +53,15 @@ body {
     font-weight: 500;
 }
 
+#contraseña, #usuario {
+    background-color: transparent;
+    
+}
+
+.input:has(:hover) {
+    border-color: #0d6efd;
+}
+
 .login-card p {
     text-align: center;
     color: #aaa; 
@@ -75,10 +85,10 @@ body {
 
     .form-control:focus {
         background-color: #333;
-        border-color: #ff6b6b;
-        color: #fff;
+        border-color: #0d6efd;
         box-shadow: 0 0 5px rgba(255,107,107,0.5);
     }
+   
 
 .mb-3 {
     margin-bottom: 1.8rem;
@@ -132,6 +142,32 @@ body {
     margin-top: 0.15rem;
     font-size: 0.9rem;
 }
+/*Enlaces movibles*/
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+    20% {
+        transform: translateX(-10px);
+    }
+    40% {
+        transform: translateX(10px);
+    }
+    60% {
+        transform: translateX(-10px);
+    }
+    80% {
+        transform: translateX(10px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.shake {
+    animation: shake 0.5s;
+}
+
 
 /* Estilo  de enlaces */
 a {
@@ -142,4 +178,5 @@ a {
     a:hover {
         color: #fff;
         text-decoration: underline;
+
     }

@@ -34,8 +34,8 @@
     }
 
     async function enviarRespuesta() {
-        if (enviar.disabled) return; // Evita múltiples envíos
-        enviar.disabled = true; // Deshabilita el botón inmediatamente
+        if (enviar.disabled) return; 
+        enviar.disabled = true; 
 
         const respuestaUsuario = parseInt(document.getElementById('respuesta').value);
         const input = document.getElementById('respuesta');
@@ -78,7 +78,7 @@
                 document.getElementById('mensaje').textContent = `❌ Incorrecto, tu racha será reiniciada`;
                 document.getElementById('respuesta').value = '';
                 document.getElementById('respuesta').focus();
-                enviar.disabled = false; // Permite volver a intentar
+                enviar.disabled = false; // //
             }
         } catch (err) {
             document.getElementById('mensaje').textContent = 'Error al validar respuesta.';
@@ -121,6 +121,6 @@
         obtenerMultiplicacion();
     });
 
-    obtenerMultiplicacion();
+obtenerMultiplicacion();
 
 

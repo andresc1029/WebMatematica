@@ -1,0 +1,143 @@
+﻿/* Reset y base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background-color: #111111;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #0d6efd;
+}
+
+/* Contenedor de cada input + botón 👁 */
+.input-container {
+    position: relative;
+    margin-bottom: 1rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+    /* Inputs */
+    .input-container input {
+        width: 100%;
+        padding: 0.8rem;
+        padding-right: 2.5rem; /* espacio para el botón 👁 */
+        border: 2px solid #333;
+        border-radius: 8px;
+        background-color: #111;
+        color: #fff;
+        font-size: 1rem;
+        transition: border-color 0.3s;
+        box-shadow: 0 10px 25px rgb(60 103 143 / 50%);
+    }
+
+        .input-container input:focus {
+            outline: none;
+            border-color: #0d6efd;
+        }
+
+        .input-container input::placeholder {
+            color: #888;
+        }
+
+/* Botón 👁 dentro de inputs de contraseña */
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #888;
+    width: auto;
+    height: auto;
+    padding: 0;
+}
+
+    .toggle-password:hover {
+        color: #fff;
+    }
+
+/* Botón de registrar */
+.btn-register {
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #0b5ed7;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+    /*.btn-register:hover {
+        background-color: #0b5ed7;
+        transform: translateY(-2px);
+    }*/
+
+    .btn-register:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+/* Mensaje */
+.mensaje {
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+/* Shake animation */
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-8px);
+    }
+
+    40% {
+        transform: translateX(8px);
+    }
+
+    60% {
+        transform: translateX(-8px);
+    }
+
+    80% {
+        transform: translateX(8px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.shake {
+    animation: shake 0.5s;
+    border-color: #ff4444 !important;
+}
+
+/* Mensaje de error debajo de inputs */
+.error-message {
+    color: #ff4444;
+    font-size: 0.85rem;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+    display: block;
+}
