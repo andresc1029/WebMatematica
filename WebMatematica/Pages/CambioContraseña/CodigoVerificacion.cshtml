@@ -1,0 +1,26 @@
+﻿@page "/CodigoVerificacion"
+@model WebMatematica.Pages.CambioContraseña.CodigoVerificacionModel
+@{
+    Layout = "_LayoutLogin";
+}
+<link rel="stylesheet" href="~/css/ReiniciarContraseñas/CodigoVerificacion.css" />
+
+<div class="container">
+    <div class="card">
+        <h1>Verificar código</h1>
+        <p>Hemos enviado un código de verificación a tu correo electrónico. Ingresa el código a continuación para continuar con la recuperación de tu cuenta.</p>
+
+        <form id="verifyForm">
+            <div class="form-group">
+                <label for="code">Código de verificación</label>
+                <input type="text" id="code" name="code" placeholder="Ingresa el código recibido" required>
+            </div>
+
+            <button type="submit" class="btn">Verificar</button>
+        </form>
+
+        <p class="note">¿No recibiste el código? <a href="recover.html">Reenviar</a></p>
+    </div>
+</div>
+
+<script src="~/js/CambiarContraseña/VerificacionCodigo.js"></script>

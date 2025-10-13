@@ -93,6 +93,8 @@ async function enviarRespuesta() {
     if (isNaN(respuestaUsuario) || !secuenciaIdActual) return;
 
     button.disabled = true; // prevenir doble click
+
+
     const body = {
         secuenciaId: secuenciaIdActual,
         respuestaUsuario,

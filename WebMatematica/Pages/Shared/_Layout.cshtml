@@ -21,7 +21,7 @@
                 <ul class="nav-links">
                     <li><a asp-page="/PaginaPrincipal">Inicio</a></li>
                     <li><a asp-page="/Multiplicaciones">Multiplicaciones</a></li>
-                    <li><a asp-page="/Pronto">Cerrar Sesión</a></li>
+                    <li><a asp-page="/CerrarSesion">Cerrar Sesión</a></li>
                 </ul>
                 <button class="nav-toggle" aria-label="Abrir menú">
                     ☰
@@ -39,25 +39,31 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
-</body>
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        // Obtener nombre desde localStorage
-        const nombre = localStorage.getItem("usuario");
-        if(nombre){
-            document.getElementById("nombre-usuario").textContent = nombre;
-        }
 
-        // Manejo de cerrar sesión
-        const logoutLink = document.querySelector('a[href="/Pronto"]');
-        if(logoutLink){
-            logoutLink.addEventListener("click", () => {
-                localStorage.removeItem("usuario");
-                localStorage.removeItem("token");
-            });
-        }
-    });
-</script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Obtener nombre desde localStorage
+            const nombre = localStorage.getItem("usuario");
+            if(nombre){
+                document.getElementById("nombre-usuario").textContent = nombre;
+            }
+
+            // Manejo de cerrar sesión
+            const logoutLink = document.querySelector('a[href="/Pronto"]');
+            if(logoutLink){
+                logoutLink.addEventListener("click", () => {
+                    localStorage.removeItem("usuario");
+                    localStorage.removeItem("token");
+                });
+            }
+        });
+    </script>
+</body>
+
+<script src="~/js/InicioSesion/CerrarSesion.js"></script>
+
 </html>
+
+
 
 

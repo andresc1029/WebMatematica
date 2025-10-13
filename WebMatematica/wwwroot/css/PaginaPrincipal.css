@@ -5,7 +5,6 @@ body {
     -ms-overflow-style: none;
 }
 .hero-section {
-    background: #111111;
     color: #fff;
     padding: 5rem 2rem;
     transform: scale(0.89);
@@ -96,7 +95,6 @@ body {
 }
 /* ===== Logic Section ===== */
 .logic-section {
-    background: #111111;
     padding: 6rem 2rem;
     margin-top: 15px;
     transform: scale(0.89);

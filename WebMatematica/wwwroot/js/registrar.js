@@ -56,7 +56,7 @@ form.addEventListener('submit', async (e) => {
         if (res.ok) {
             mensajeDiv.style.color = 'green';
             mensajeDiv.textContent = '✅ Registro exitoso. Redirigiendo...';
-            setTimeout(() => window.location.href = '/login', 1500);
+            setTimeout(() => window.location.href = '/Index', 1500);
         } else {
             mensajeDiv.style.color = 'red';
             mensajeDiv.textContent = data.mensaje || '❌ Error en el registro';

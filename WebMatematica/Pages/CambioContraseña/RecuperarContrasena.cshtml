@@ -1,0 +1,26 @@
+﻿@page "/RecuperarContraseña"
+@model WebMatematica.Pages.RecuperarContrasenaModel
+@{
+    Layout = "_LayoutLogin";
+}
+
+<link rel="stylesheet" href="~/css/ReiniciarContraseñas/recuperarContrasena.css" />
+
+<div class="container">
+    <div class="card carta">
+        <h2>Recuperación de Contraseña</h2>
+        <p>Introduce tu correo electrónico registrado y te enviaremos un código de recuperación. Este código será válido por 15 minutos.</p>
+
+            <form id="recoverForm">
+                <input type="email" id="email" placeholder="Ingresa tu correo" required />
+                <button type="submit" class="btn">Enviar código</button>
+            </form>
+
+            <div id="messageBox" style="margin-bottom: 15px; opacity:0; transition: opacity 0.5s;"></div>
+
+
+        <p class="mensaje" id="mensaje"></p>
+    </div>
+</div>
+
+<script src="~/js/CambiarContraseña/VerificacionContraseña.js"></script>
