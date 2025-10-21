@@ -30,8 +30,8 @@ body {
 }
 
 .hero-subtitle {
-    color: #bbbbbb;
-    margin-bottom: 1.5rem;
+    color: #fff;
+    margin-bottom: 0.1rem;
 }
 
 .hero-lead {
@@ -129,7 +129,7 @@ body {
 
 .logic-subtitle {
     color: #666;
-    margin-bottom: 1rem;
+    margin-bottom: 0.1rem;
 }
 
 .logic-lead {

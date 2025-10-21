@@ -4,6 +4,24 @@ const form = document.querySelector("#loginForm");
 const mensajeDiv = document.getElementById("mensajeLogin");
 const loginBtn = form.querySelector("button[type=submit]");
 
+document.addEventListener("DOMContentLoaded", () => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+        const payload = parseJwt(token);
+        const exp = payload?.exp * 1000; // 'exp' viene en segundos
+
+        if (Date.now() < exp) {
+            // Token aún válido → redirige al usuario
+            window.location.href = "/PaginaPrincipal";
+        } else {
+            // Token expiró, eliminarlo
+            localStorage.removeItem("token");
+            localStorage.removeItem("usuario");
+        }
+    }
+});
+
 form.addEventListener("submit", async (e) => {
     e.preventDefault(); 
     loginBtn.disabled = true; 
@@ -44,3 +62,7 @@ form.addEventListener("submit", async (e) => {
         loginBtn.disabled = false;
     }
 });
+
+
+
+

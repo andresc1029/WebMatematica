@@ -1,5 +1,5 @@
 ﻿document.addEventListener("DOMContentLoaded", () => {
-    const logoutLink = document.getElementById("btnCerrarSesion");
+    const logoutLink = document.getElementById("CerrarSesion");
     if (logoutLink) {
         logoutLink.addEventListener("click", (e) => {
             e.preventDefault();
@@ -8,9 +8,11 @@
             localStorage.removeItem("token");
             localStorage.removeItem("correoRecuperacion");
             localStorage.removeItem("tokenRecuperacion");
+            localStorage.clear()
 
             // Redirigir a la página de inicio o login
-            window.location.href = "/Index";
+            window.location.replace("/Index");
+            
         });
     }
 });

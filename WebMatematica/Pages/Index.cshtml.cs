@@ -8,5 +8,17 @@ namespace WebMatematica.Pages
 {
     public class loginModel : PageModel
     {
+        public IActionResult OnGet()
+        {
+            var token = Request.Cookies["jwt"];
+            if (!string.IsNullOrEmpty(token))
+            {
+                // Redirige antes de renderizar la página
+                return RedirectToPage("/PaginaPrincipal");
+            }
+
+            return Page();
+        }
+
     }
 }
