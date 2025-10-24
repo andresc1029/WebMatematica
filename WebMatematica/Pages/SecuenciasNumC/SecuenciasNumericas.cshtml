@@ -1,0 +1,23 @@
+﻿@page "/SecuenciasNumericas"
+@model WebMatematica.Pages.SecuenciasNumericasModel
+@{
+}
+
+<link rel="stylesheet" href="~/css/SecuenciasNumericas.css" />
+
+<h1>Secuencias Numéricas</h1>
+
+<div class="secuencia-container" id="secuencia"></div>
+
+<div class="input-container">
+    <input type="number" id="respuestaUsuario" placeholder="Tu respuesta">
+    <button id="enviar">Enviar</button>
+</div>
+
+<div class="resultado" id="resultado"></div>
+
+<div class="racha-container">
+    <span>🔥 Racha Actual:</span> <span id="rachaActual">0</span>
+</div>
+
+<script src="~/js/SecuenciasNumericas.js"></script>

@@ -1,0 +1,34 @@
+﻿@page "/Registrar"
+@model WebMatematica.Pages.RegistrarModel
+@{
+    Layout = "_LayoutLogin";
+}
+
+<link rel="stylesheet" href="~/css/registrar.css" />
+
+<h2>Registro</h2>
+<form id="registroForm">
+    <div class="input-container">
+        <input type="text" id="usuario" placeholder="Usuario" required />
+    </div>
+
+    <div class="input-container">
+        <input type="password" id="contrasena" placeholder="Contraseña" required />
+        <button type="button" class="toggle-password" data-target="contrasena">👁</button>
+    </div>
+
+    <div class="input-container">
+        <input type="password" id="confirmarContrasena" placeholder="Confirmar contraseña" required />
+        <button type="button" class="toggle-password" data-target="confirmarContrasena">👁</button>
+    </div>
+
+    <div class="input-container">
+        <input type="email" id="correo" placeholder="Correo (opcional)" />
+    </div>
+
+    <button type="submit" class="btn-register">Registrarse</button>
+</form>
+
+<div class="mensaje" id="mensajeRegistro"></div>
+
+<script src="~/js/registrar.js"></script>

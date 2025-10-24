@@ -11,20 +11,20 @@
 
 
 <script>
-    // Validar token antes de mostrar la página
+    // Validar token 
     const token = localStorage.getItem("token");
 
     if (token) {
-        // Usuario autenticado → redirigir sin mostrar nada
+        // redirigir sin mostrar nada
         window.location.replace("/PaginaPrincipal");
     } else {
-        // No autenticado → mostrar contenido después de que cargue el DOM
+        //  mostrar contenido
         document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("login-contenido").classList.remove("invisible");
         });
     }
 
-    // (Opcional) función para decodificar JWT
+    // decodificar JWT
     function parseJwt(token) {
         try {
             const base64Url = token.split(".")[1];

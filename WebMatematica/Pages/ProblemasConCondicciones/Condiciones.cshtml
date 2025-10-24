@@ -1,0 +1,31 @@
+﻿@page "/Condiciones"
+@model WebMatematica.Pages.ProblemasConCondicciones.CondicionesModel
+@{
+}
+
+<link rel="stylesheet" href="~/css/CssCondicionesProblemas/Condiciones.css" />
+
+<div class="container">
+    <h1 class="titulo">Ejercicios de Condicionales</h1>
+
+    <section id="problemaSection" class="problema-section">
+        <div id="enunciado" class="enunciado">Presiona el botón para obtener un problema</div>
+
+        <ul id="opciones" class="opciones-list"></ul>
+
+        <div class="acciones">
+            <button id="btnObtener" class="btn btn-primary">Obtener Problema</button>
+            <button id="btnResponder" class="btn btn-secundario" disabled>Enviar Respuesta</button>
+        </div>
+    </section>
+
+    <section id="resultadoSection" class="resultado-section">
+        <p id="resultadoTexto"></p>
+        <div class="racha-container">
+            <span class="label">Racha Actual:</span> <span id="rachaActual">0</span>
+            <span class="label">Racha Máxima:</span> <span id="rachaMaxima">0</span>
+        </div>
+    </section>
+</div>
+
+<script src="/js/JsProblemasCondiciones/CondicionesNN.js"></script>

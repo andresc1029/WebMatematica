@@ -1,0 +1,84 @@
+﻿@page "/Perfil"
+@model WebMatematica.Pages.PerfilUsuarioC.PerfilUsuarioModel
+@{
+    ViewData["Title"] = "Perfil de Usuario";
+}
+
+<link rel="stylesheet" href="~/css/PerfilDeUsuario/PefilUsuario.css" />
+
+<div class="perfil-layout">
+
+    <aside class="sidebar-perfil">
+        <div class="usuario-header">
+            <div class="avatar"></div>
+            <div class="usuario-info">
+                <h1 id="nombre-usuarioh1">Cargando...</h1>
+                <p class="descripcion">El Admin</p>
+            </div>
+        </div>
+
+        <div class="estadisticas">
+            <h3>Estadísticas</h3>
+            <ul>
+                <li><strong>Nivel:</strong> Pronto...</li>
+                <li><strong>Racha acomulada:</strong> Pronto...</li>
+                <li><strong>Puntaje total:</strong> Pronto...</li>
+            </ul>
+        </div>
+    </aside>
+
+<main class="main-content">
+        <section class="top-section">
+            <h2>Top global</h2>
+
+            <div class="filtros-top">
+                <div class="modulo-selector">
+                    <button class="modulo-btn active" data-modulo="multiplicaciones">Secuencias Numéricas</button>
+                    <button class="modulo-btn" data-modulo="condicionales">Problemas con Condiciones</button>
+                    <button class="modulo-btn" data-modulo="razonamiento">abstracción</button>
+                </div>
+
+                <div class="tipo-selector" style="
+                     display: flex;
+                     margin-top: 45px;
+                     flex-wrap: nowrap;
+                     flex-direction: column;
+                     ">
+                    <button class="tipo-btn active" data-tipo="actual">Top Actual</button>
+                    <button class="tipo-btn" data-tipo="historico">Top Histórico</button>
+                </div>
+            </div>
+
+            <div class="tabla-top">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Puesto</th>
+                            <th>Usuario</th>
+                            <th>Racha</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-top-body">
+                        <tr><td></td><td>Cargando...</td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+</div>
+<script>
+    window.addEventListener("load", () => {
+        const nombre = localStorage.getItem("usuario");
+        const elemento = document.getElementById("nombre-usuarioh1");
+
+        if (nombre && elemento) {
+            elemento.textContent = nombre;
+            console.log("✅ Nombre mostrado correctamente:", nombre);
+        } else {
+            console.warn("⚠️ No se pudo mostrar el nombre. nombre:", nombre, "elemento:", elemento);
+        }
+    });
+</script>
+
+<script src="~/js/JsPerfilUsuario/Perfil.js"></script>

@@ -31,6 +31,8 @@ form.addEventListener('submit', async (e) => {
     const confirmarContrasena = document.getElementById('confirmarContrasena').value.trim();
     const correo = document.getElementById('correo').value.trim();
 
+    console.log({ nombreUsuario, contrasena, correo }); 
+
     // Validación de contraseñas
     if (contrasena !== confirmarContrasena) {
         mensajeDiv.style.color = 'red';
@@ -43,12 +45,14 @@ form.addEventListener('submit', async (e) => {
         btn.disabled = false;
         return;
     }
-
+ 
     try {
         const res = await fetch(`${apiBase}/api/ControladorUsuarios/Registro`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ nombreUsuario, contrasena, correo })
+            body: JSON.stringify({ nombreUsuario, contrasena, Correo: correo })
+
+
         });
 
         const data = await res.json();

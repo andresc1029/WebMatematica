@@ -1,0 +1,28 @@
+﻿@page "/Multiplicaciones"
+@model IndexModel
+@{
+    ViewData["Title"] = "Práctica de Multiplicaciones";
+}
+
+<link rel="stylesheet" href="~/css/Multiplicaciones.css" />
+
+
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card-custom text-center">
+        <h1 class="mb-4">Solucione</h1>
+
+        <div id="multiplicacion" class="operation-text">
+            Cargando...
+        </div>
+
+        <input type="number" id="respuesta" class="form-control mb-3 text-center" placeholder="Escribe tu respuesta">
+        <button id="enviar" class="btn btn-primary w-100 mb-2">Enviar</button>
+        <button id="modoTiempo" class="btn btn-outline-warning w-100 mb-2">¿Tiempo?</button>
+
+        <div id="tiempoRestante" class="info-text"></div>
+        <div id="racha" class="info-text"></div>
+        <div id="mensaje" class="message-text"></div>
+    </div>
+</div>
+
+<script src="~/js/Multiplicaciones.js"></script>

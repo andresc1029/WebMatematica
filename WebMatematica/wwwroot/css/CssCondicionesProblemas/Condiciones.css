@@ -1,0 +1,133 @@
+﻿body {
+    background-color: #000;
+    color: #f0f0f0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+}
+
+.container {
+    width: 90%;
+    max-width: 700px;
+    border-radius: 16px;
+    padding: 2rem;
+}
+
+.titulo {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.problema-section, .resultado-section {
+    margin-top: 1rem;
+}
+
+.enunciado {
+    background-color: #1a1a1a;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.opciones-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.opcion {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    padding: 0.8rem;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+    .opcion:hover {
+        background-color: #0d6efd;
+        color: #fff;
+    }
+
+    .opcion.seleccionada {
+        background-color: #0d6efd;
+        color: #fff;
+        border-color: #0d6efd;
+    }
+
+
+.acciones {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.btn {
+    flex: 1;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    color: white;
+}
+
+    .btn-primary:hover {
+        background-color: #0b5ed7;
+    }
+
+.btn-secundario {
+    background-color: #222;
+    color: #fff;
+    border: 1px solid #0d6efd;
+}
+
+    .btn-secundario:hover {
+        background-color: #0d6efd;
+    }
+
+.hidden {
+    display: none;
+}
+
+
+.racha-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    background-color: #111;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    border: 2px solid #0d6efd;
+    box-shadow: 0 0 10px #0d6efd33, 0 0 5px #0d6efd22 inset;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 1rem;
+}
+
+    .racha-container span.label {
+        color: #0d6efd;
+    }
+
+    .racha-container.nueva-racha {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px #0d6efd, 0 0 10px #0d6efd inset;
+        transition: transform 0.2s ease, box-shadow 0.3s ease;
+    }
