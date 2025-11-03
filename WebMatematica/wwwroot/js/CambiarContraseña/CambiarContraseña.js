@@ -16,7 +16,7 @@ function showMessage(msg, type = "info") {
     setTimeout(() => { messageBox.style.opacity = "0"; }, 4000);
 }
 
-// Obtenemos correo y token desde sessionStorage
+// correo y token desde sessionStorage
 const correo = sessionStorage.getItem("correoRecuperacion");
 const token = sessionStorage.getItem("tokenRecuperacion");
 
@@ -66,6 +66,8 @@ if (resetForm) {
                 showMessage(data.mensaje || "Error al actualizar contraseña.", "error");
                 return;
             }
+
+            console.log("Respuesta del servidor:", data);
 
             showMessage("Contraseña actualizada correctamente.", "success");
 

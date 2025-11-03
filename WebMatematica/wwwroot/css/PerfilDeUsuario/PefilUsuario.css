@@ -22,8 +22,6 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     gap: 40px;
-    box-shadow: 2px 0 15px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10px); 
 }
 
 /* HEADER DEL USUARIO */
@@ -93,7 +91,7 @@ body {
 .top-section {
     border-radius: 12px;
     padding: 30px;
-    background: #1c1c1c;
+    background: #0a121f;
     box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -189,7 +187,6 @@ tbody tr:hover {
         align-items: center;
         justify-content: space-around;
         border-right: none;
-        border-bottom: 2px solid rgba(255,255,255,0.1);
         gap: 20px;
         padding: 15px 10px;
     }
