@@ -1,169 +1,160 @@
-﻿/* ===== Hero Section ===== */
+﻿/* Body general */
 body {
-    overflow: auto;
-    scrollbar-width: none; 
-    -ms-overflow-style: none;
-}
-.hero-section {
+    background-color: #0a0a23;
     color: #fff;
-    padding: 5rem 2rem;
-    transform: scale(0.89);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    scroll-behavior: smooth;
 }
 
-
-.hero-container {
+/* Hero Section */
+.hero-section {
+    margin-bottom: -170px;
+    min-height: 100vh;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
     align-items: center;
-    gap: 2rem;
-}
-
-.hero-text {
-    flex: 1 1 400px;
-    max-width: 60ch;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
 }
 
 .hero-title {
-    font-size: 3rem;
+    font-size: 4rem;
+    font-weight: 900;
     margin-bottom: 1rem;
+    line-height: 1.1;
 }
 
+    .hero-title .highlight {
+        color: #0d6efd;
+    }
+
 .hero-subtitle {
-    color: #fff;
-    margin-bottom: 0.1rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #ccc;
+    margin-bottom: 1rem;
 }
 
 .hero-lead {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.feature-list {
-    margin-bottom: 1.5rem;
-    list-style: none;
-    padding-left: 0;
+/* Feature list */
+.feature-list li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
 }
 
-    .feature-list li {
-        margin-bottom: 0.5rem;
+    .feature-list li::before {
+        content: "✔";
+        position: absolute;
+        left: 0;
+        color: #9b59b6;
     }
 
-.hero-buttons a {
-    display: inline-block;
-    margin-right: 1rem;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 500;
+/* Botones hero */
+.hero-buttons .btn {
     transition: all 0.3s ease;
 }
 
-.btn-primary {
-    background-color: #0d6efd;
-    color: #fff;
-}
-
-    .btn-primary:hover {
-        background-color: #0b5ed7;
+    .hero-buttons .btn:hover {
+        transform: translateY(-3px);
     }
 
-.btn-outline-primary {
-    border: 2px solid #0d6efd;
-    color: #0d6efd;
-    background: transparent;
-}
-
-    .btn-outline-primary:hover {
-        background: #0d6efd;
-        color: #fff;
-    }
-
-/* Hero imagen */
-
-.hero-image{
-    flex: 1 1 300px;
-    display:flex;
-    margin: 0;
-    padding: 20px;
-    float: right;
-}
-
-.imgWeb1{
-    max-width: 100%;
-
-}
-/* ===== Logic Section ===== */
+/* Sección lógica */
 .logic-section {
-    padding: 6rem 2rem;
-    margin-top: 15px;
-    transform: scale(0.89);
+    margin-top: 70px;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
 }
 
-.logic-container {
-    display: flex;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 2rem;
+.logic-title .highlight {
+    color: #0d6dfc;
 }
 
-.logic-image {
-    flex: 1 1 400px;
 
+.logic-img.animate-float {
+    animation: float 4s ease-in-out infinite;
 }
 
-.logic-text {
-    max-width: 90ch;
-    flex: 1 1 400px; 
-    max-width: 90ch;
-    text-align: left;
-}
-
-.logic-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-}
-
-.logic-subtitle {
-    color: #666;
-    margin-bottom: 0.1rem;
-}
-
-.logic-lead {
-    margin-bottom: 1.5rem;
-}
-
-.logic-buttons a {
-    display: inline-block;
-    margin-right: 1rem;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-.logic-buttons{
-    display: flex;
-}
-
-.btn-dark {
-    border: 2px solid #0d6efd;
-    color: #0d6efd;
-    background: transparent;
-}
-
-    .btn-dark:hover {
-        color:white;
-        background-color:#0a58ca;
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
     }
 
-/* Imagen */
-.logic-image img {
-    max-width: 100%;
-    display: block;
-    margin: auto;
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
+/* Botones secciones lógica */
+.logic-buttons .btn {
+    transition: all 0.3s ease;
+}
+
+    .logic-buttons .btn:hover {
+        transform: translateY(-2px);
+    }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.3rem;
+    }
+
+    .hero-lead {
+        font-size: 1rem;
+    }
+
+    .logic-title {
+        font-size: 2rem;
+    }
+}
+
+.hero-image img {
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    max-width: 300px;
+}
+
+    .hero-image img:hover {
+        transform: translateY(-5px) scale(1.05);
+    }
+
+
+/* Animación flotante para la imagen */
+.logic-img.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Fade-in para el texto al aparecer */
+.logic-text {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+    /* Clase activa cuando se hace scroll */
+    .logic-text.active {
+        opacity: 1;
+        transform: translateY(0);
+    }

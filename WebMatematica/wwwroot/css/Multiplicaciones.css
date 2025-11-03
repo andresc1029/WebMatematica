@@ -19,7 +19,6 @@ body {
 
 /* ===== Card ===== */
 .card-custom {
-    background: #0a121f;
     border-radius: 15px;
     max-width: 450px;
     width: 100%;
@@ -62,13 +61,12 @@ body {
     padding: 12px;
     font-size: 1.1rem;
     text-align: center;
-    background: #2c2c2c;
     color: #fff;
 }
 
     .form-control:focus {
         outline: none;
-        box-shadow: 0 0 5px #0d6efd;
+
         background: #2c2c2c;
         color: #fff;
     }
