@@ -70,7 +70,62 @@ document.querySelectorAll(".tipo-btn").forEach(btn => {
     });
 });
 
-// Inicializar al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
+    // Cargar datos del top
     cargarTop();
+
+    const menuBtn = document.getElementById("menu-filtros-btn");
+    const menu = document.getElementById("menu-filtros");
+    const overlay = document.getElementById("overlay-filtros");
+
+    if (menuBtn && menu && overlay) {
+        menuBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            menu.classList.toggle("oculto");
+            overlay.classList.toggle("oculto");
+        });
+
+        overlay.addEventListener("click", () => {
+            menu.classList.add("oculto");
+            overlay.classList.add("oculto");
+        });
+
+
+        menu.addEventListener("click", (e) => {
+            e.stopPropagation();
+        });
+    } else {
+        // debug 
+        console.warn("menuBtn/menu/overlay no encontrados:", { menuBtn, menu, overlay });
+    }
+
+    // Botones para cambiar módulo
+    const moduloBtns = document.querySelectorAll(".modulo-btn");
+    moduloBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            moduloBtns.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+
+            const modulo = btn.dataset.modulo;
+            const tipoBtnActivo = document.querySelector(".tipo-btn.active");
+            const tipo = tipoBtnActivo ? tipoBtnActivo.dataset.tipo : "actual";
+
+            mostrarTop(modulo, tipo);
+        });
+    });
+
+    const tipoBtns = document.querySelectorAll(".tipo-btn");
+    tipoBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            tipoBtns.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+
+            const tipo = btn.dataset.tipo;
+            const moduloBtnActivo = document.querySelector(".modulo-btn.active");
+            const modulo = moduloBtnActivo ? moduloBtnActivo.dataset.modulo : "multiplicaciones";
+
+            mostrarTop(modulo, tipo);
+        });
+    });
+
 });

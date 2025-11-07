@@ -14,6 +14,7 @@
     max-width: 700px;
     border-radius: 16px;
     padding: 2rem;
+    transform: scale(0.95)
 }
 
 .titulo {
@@ -130,3 +131,23 @@
         box-shadow: 0 0 15px #0d6efd, 0 0 10px #0d6efd inset;
         transition: transform 0.2s ease, box-shadow 0.3s ease;
     }
+
+
+
+.resultado-section {
+    transform: scale(0.80);
+}
+
+.titulo {
+    margin-top: 10px;
+}
+
+
+#resultadoContainer {
+    transition: opacity 0.5s ease;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none; /* para que no interfiera */
+}

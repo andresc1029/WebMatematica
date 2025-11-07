@@ -8,12 +8,12 @@
 
 <div class="perfil-layout">
 
-    <aside class="sidebar-perfil">
+    <aside class="sidebar-perfil" style="margin-right: 70px;">
         <div class="usuario-header">
             <div class="avatar"></div>
             <div class="usuario-info">
                 <h1 id="nombre-usuarioh1">Cargando...</h1>
-                <p class="descripcion">El Admin</p>
+                <p class="descripcion">...</p>
             </div>
         </div>
 
@@ -28,26 +28,10 @@
     </aside>
 
 <main class="main-content">
-        <section class="top-section">
+        <section class="top-section" style=" margin-right: -120px;">
             <h2>Top global</h2>
 
-            <div class="filtros-top">
-                <div class="modulo-selector">
-                    <button class="modulo-btn active" data-modulo="multiplicaciones">Secuencias Numéricas</button>
-                    <button class="modulo-btn" data-modulo="condicionales">Problemas con Condiciones</button>
-                    <button class="modulo-btn" data-modulo="razonamiento">abstracción</button>
-                </div>
-
-                <div class="tipo-selector" style="
-                     display: flex;
-                     margin-top: 45px;
-                     flex-wrap: nowrap;
-                     flex-direction: column;
-                     ">
-                    <button class="tipo-btn active" data-tipo="actual">Top Actual</button>
-                    <button class="tipo-btn" data-tipo="historico">Top Histórico</button>
-                </div>
-            </div>
+            <button id="menu-filtros-btn" class="menu-filtros-btn">⚙️ Filtros</button>
 
             <div class="tabla-top">
                 <table>
@@ -62,6 +46,24 @@
                         <tr><td></td><td>Cargando...</td><td></td></tr>
                     </tbody>
                 </table>
+            </div>
+
+            <div id="overlay-filtros" class="overlay oculto"></div>
+
+            <!--  Menú desplegable oculto -->
+            <div id="menu-filtros" class="menu-filtros oculto">
+                <div class="modulo-selector">
+                    <button class="modulo-btn active" data-modulo="multiplicaciones">Secuencias Numéricas</button>
+                    <button class="modulo-btn" data-modulo="condicionales">Problemas con Condiciones</button>
+                    <button class="modulo-btn" data-modulo="razonamiento">Abstracción</button>
+                </div>
+
+                <hr>
+
+                <div class="tipo-selector">
+                    <button class="tipo-btn active" data-tipo="actual">Top Actual</button>
+                    <button class="tipo-btn" data-tipo="historico">Top Histórico</button>
+                </div>
             </div>
         </section>
     </main>

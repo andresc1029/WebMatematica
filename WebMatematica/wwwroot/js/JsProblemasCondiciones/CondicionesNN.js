@@ -114,7 +114,7 @@ async function enviarRespuesta() {
         // Ocultar el resultado después de 2 segundos
         setTimeout(() => {
             resultadoSection.classList.add('hidden');
-        }, 2000);
+        }, 800);
 
         // Actualizar racha
         actualizarRacha(data.rachaActual, data.rachaMaxima);
