@@ -1,7 +1,4 @@
-﻿// =========================
-// CONFIGURACIÓN
-// =========================
-const apiBase = 'https://localhost:7131';
+﻿const apiBase = 'https://localhost:7131';
 const modo = 0; // Secuencias numéricas
 
 const secuenciaContainer = document.getElementById('secuencia');
@@ -13,9 +10,7 @@ const rachaSpan = document.getElementById('rachaActual');
 let secuenciaActual = [];
 let secuenciaIdActual = null;
 
-// =========================
-// UTILIDADES
-// =========================
+
 
 // Extraer payload del JWT
 function parseJwt(token) {
@@ -42,9 +37,6 @@ if (!usuarioId) {
     alert("No se pudo identificar el usuario. Por favor inicia sesión de nuevo.");
 }
 
-// =========================
-// FUNCIONES PRINCIPALES
-// =========================
 
 //  Obtener racha inicial
 async function cargarRacha() {
@@ -85,69 +77,79 @@ function mostrarSecuencia(nums) {
         setTimeout(() => div.classList.add('animate'), index * 500);
         setTimeout(() => div.classList.remove('animate'), (index * 500) + 400);
     });
-}
-
-//  Enviar respuesta del usuario
-async function enviarRespuesta() {
-    const respuestaUsuario = parseInt(input.value);
-    if (isNaN(respuestaUsuario) || !secuenciaIdActual) return;
-
-    button.disabled = true; // prevenir doble click
 
 
-    const body = {
-        secuenciaId: secuenciaIdActual,
-        respuestaUsuario,
-        usuarioId,
-        modo
-    };
 
-    try {
-        const res = await fetch(`${apiBase}/api/ControladorDeSecuencias/responder`, {
-            method: 'POST',
-            body: JSON.stringify(body),
-            headers: { 'Content-Type': 'application/json' }
-        });
-        const data = await res.json();
 
-        // Actualizar racha en pantalla
-        actualizarRacha(data.rachaActual);
+    let esperandoRespuesta = false; 
 
-        // Mostrar resultado al usuario
-        resultadoDiv.textContent = data.correcta
-            ? '¡Correcto! 🎉'
-            : `Incorrecto 😢 (Respuesta correcta: ${data.respuestaCorrecta})`;
-        resultadoDiv.style.color = data.correcta ? '#0d6efd' : '#ff4c4c';
+    async function enviarRespuesta() {
+        if (esperandoRespuesta) return; 
+        esperandoRespuesta = true;
 
-        // Efecto shake si falla
-        if (!data.correcta) {
-            input.classList.add('incorrecta');
-            setTimeout(() => input.classList.remove('incorrecta'), 500);
+        const respuestaUsuario = parseInt(input.value);
+        if (isNaN(respuestaUsuario) || !secuenciaIdActual) {
+            esperandoRespuesta = false; 
+            return;
         }
 
-        // Limpiar input
-        input.value = '';
+        button.disabled = true;
 
-        // Cargar nueva secuencia 
-        if (data.correcta) {
-            lanzarParticulas();
-            setTimeout(() => {
-                cargarSecuencia();
+        const body = {
+            secuenciaId: secuenciaIdActual,
+            respuestaUsuario,
+            usuarioId,
+            modo
+        };
+
+        try {
+            const res = await fetch(`${apiBase}/api/ControladorDeSecuencias/responder`, {
+                method: 'POST',
+                body: JSON.stringify(body),
+                headers: { 'Content-Type': 'application/json' }
+            });
+            const data = await res.json();
+
+            // Actualizar racha en pantalla
+            actualizarRacha(data.rachaActual);
+
+            // Mostrar resultado al usuario
+            resultadoDiv.textContent = data.correcta
+                ? '¡Correcto! 🎉'
+                : `Incorrecto 😢`;
+            resultadoDiv.style.color = data.correcta ? '#0d6efd' : '#ff4c4c';
+
+            if (!data.correcta) {
+                input.classList.add('incorrecta');
+                setTimeout(() => input.classList.remove('incorrecta'), 500);
+            }
+
+            // Limpiar input
+            input.value = '';
+
+            // Cargar nueva secuencia
+            if (data.correcta) {
+                lanzarParticulas();
+                setTimeout(() => {
+                    resultadoDiv.textContent = '';
+                    cargarSecuencia();
+                    button.disabled = false;
+                    esperandoRespuesta = false; 
+                }, 1000);
+            } else {
                 button.disabled = false;
-            }, 1000);
-        } else {
+                esperandoRespuesta = false;
+            }
+
+        } catch (err) {
+            console.error("Error al enviar respuesta:", err);
             button.disabled = false;
+            esperandoRespuesta = false; 
         }
-
-    } catch (err) {
-        console.error("Error al enviar respuesta:", err);
-        button.disabled = false;
     }
-}
 
-// =========================
-// EFECTOS
-// =========================
+// efectos
+
 function lanzarParticulas() {
     for (let i = 0; i < 15; i++) {
         const p = document.createElement('div');
@@ -172,16 +174,13 @@ function actualizarRacha(valor) {
     rachaContainer.classList.add('nueva-racha');
 }
 
-// =========================
-// EVENTOS
-// =========================
+
 button.addEventListener('click', enviarRespuesta);
 input.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') enviarRespuesta();
 });
 
-// =========================
 // INICIALIZACIÓN
-// =========================
+
 cargarRacha();
 cargarSecuencia();

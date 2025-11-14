@@ -1,5 +1,4 @@
-﻿
-body {
+﻿body {
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -7,38 +6,37 @@ body {
     background-image: url(/Imagenes/descarga.jpg);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     overflow: hidden;
-    color: #f5f5f5;
+    color: #1f2937; /* gris oscuro moderno */
 }
 
 /* Tarjeta de login */
 .login-card {
-    background-color: #0a111e;
+    background-color: #0a0a23; /* blanco limpio estilo Figma */
     border-radius: 12px;
     padding: 3rem 2rem;
     width: 80%;
     max-width: 450px;
     margin: auto;
-    box-shadow: 0 0 15px rgba(13,110,253,0.5);
-    color: #fff;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12); /* sombra moderna */
+    color: #1f2937;
     transition: transform 0.3s ease;
     transform: scale(0.85);
 }
 
-
-
     .login-card h2 {
         text-align: center;
         margin-bottom: 2rem;
-        color: #f5f5f5;
+        color: #ffffff; 
     }
+
     .login-card .decoracion {
         display: block;
-        width: 100%; 
-        text-align: center; 
-        color: #aaa; 
-        margin: 1rem 0 0.5rem 0; 
+        width: 100%;
+        text-align: center;
+        color: #9ca3af; /* gris suave */
+        margin: 1rem 0 0.5rem 0;
         font-size: 0.85rem;
-        letter-spacing: 1px; 
+        letter-spacing: 1px;
     }
 
 /* Labels e inputs */
@@ -46,45 +44,47 @@ body {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 500;
+    color: #374151; /* gris */
 }
 
 #contraseña, #usuario {
     background-color: transparent;
-    
 }
 
+/* Hover borde */
 .input:has(:hover) {
-    border-color: #0d6efd;
+    border-color: #3b82f6; /* azul tipo Figma */
 }
 
 .login-card p {
     text-align: center;
-    color: #aaa; 
-    margin: 1rem 0 0.5rem 0; 
+    color: #6b7280;
+    margin: 1rem 0 0.5rem 0;
     font-size: 0.85rem;
-    letter-spacing: 1px; 
+    letter-spacing: 1px;
 }
 
+/* Input moderno */
 .form-control {
-    background-color: #333;
-    border: 1px solid #444;
-    color: #eee;
+    background-color: #f9fafb; /* gris muy claro */
+    border: 1px solid #d1d5db;
+    color: #374151;
     height: 50px;
     padding: 0 1rem;
     font-size: 1.05rem;
     border-radius: 8px;
-    width: 87%;
-    width: 100%; 
+    width: 100%;
     box-sizing: border-box;
+    transition: 0.25s ease;
 }
 
     .form-control:focus {
-        background-color: #333;
-        border-color: #0d6efd;
-        box-shadow: 0 0 5px rgba(255,107,107,0.5);
+        background-color: #ffffff;
+        border-color: #3b82f6; /* azul Figma */
+        box-shadow: 0 0 0 3px rgba(59,130,246,0.3); /* aura azul */
     }
-   
 
+/* Margen */
 .mb-3 {
     margin-bottom: 1.8rem;
 }
@@ -93,10 +93,10 @@ body {
 .btn-login {
     display: block;
     width: 100%;
-    background: #0d6efd;
+    background: #3b82f6; /* azul shadcn/figma */
     color: #fff;
     border: none;
-    transition: 0.3s ease;
+    transition: 0.25s ease;
     height: 40px;
     font-size: 1.02rem;
     border-radius: 8px;
@@ -105,27 +105,27 @@ body {
 }
 
     .btn-login:hover {
-        background: #0d6efd;
+        background: #2563eb; /* azul más oscuro */
     }
 
 /* Botón Registrar */
 .btn-register {
     display: block;
     width: 100%;
-    background: #0d6efd;
-    color: #fff;
-    border: #0d6efd;
+    background: #e5e7eb; /* gris claro estilo secondary button */
+    color: #1f2937;
+    border: none;
     padding: 0.55rem 0;
     font-size: 1.02rem;
     border-radius: 8px;
-    transition: 0.3s ease;
+    transition: 0.25s ease;
     text-decoration: none;
     margin-bottom: 0.2rem;
     text-align: center;
 }
 
     .btn-register:hover {
-        background: #0d6efd;
+        background: #d1d5db;
     }
 
 /* Enlace Olvidaste contraseña */
@@ -136,24 +136,36 @@ body {
     text-align: center;
     margin-top: 0.15rem;
     font-size: 0.9rem;
+    color: #3b82f6; /* azul principal */
 }
-/*Enlaces movibles*/
+
+    .text-center a:hover {
+        color: #2563eb;
+        text-decoration: underline;
+    }
+
+/* Enlaces animación shake */
 @keyframes shake {
     0% {
         transform: translateX(0);
     }
+
     20% {
         transform: translateX(-10px);
     }
+
     40% {
         transform: translateX(10px);
     }
+
     60% {
         transform: translateX(-10px);
     }
+
     80% {
         transform: translateX(10px);
     }
+
     100% {
         transform: translateX(0);
     }
@@ -163,15 +175,13 @@ body {
     animation: shake 0.5s;
 }
 
-
-/* Estilo  de enlaces */
+/* Estilo de enlaces */
 a {
-    color: #0d6efd;
+    color: #3b82f6;
     text-decoration: none;
 }
 
     a:hover {
-        color: #fff;
+        color: #2563eb;
         text-decoration: underline;
-
     }

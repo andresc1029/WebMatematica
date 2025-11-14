@@ -4,6 +4,7 @@
     razonamiento: { actual: [], historico: [] }
 };
 
+// Cargar datos del top desde el API
 async function cargarTop() {
     try {
         const res = await fetch("https://localhost:7131/api/Top/completo");
@@ -20,11 +21,7 @@ async function cargarTop() {
         topData.razonamiento.actual = data.modulo2_Actual || [];
         topData.razonamiento.historico = data.modulo2_Historico || [];
 
-        console.log("multiplicaciones.actual:", topData.multiplicaciones.actual);
-        console.log("multiplicaciones.historico:", topData.multiplicaciones.historico);
-
-
-        // Mostrar el top inicial
+        // Mostrar top inicial
         mostrarTop("multiplicaciones", "actual");
 
     } catch (err) {
@@ -32,11 +29,17 @@ async function cargarTop() {
     }
 }
 
+// Función para renderizar el top
 function mostrarTop(modulo, tipo) {
     const cuerpo = document.getElementById("tabla-top-body");
     cuerpo.innerHTML = "";
 
     const lista = topData[modulo][tipo];
+    if (!lista.length) {
+        cuerpo.innerHTML = `<tr><td colspan="3" style="text-align:center;">No hay datos disponibles</td></tr>`;
+        return;
+    }
+
     lista.forEach((jugador, index) => {
         const tr = document.createElement("tr");
         tr.innerHTML = `
@@ -48,32 +51,12 @@ function mostrarTop(modulo, tipo) {
     });
 }
 
-// Botones para cambiar módulo
-document.querySelectorAll(".modulo-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-        document.querySelectorAll(".modulo-btn").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        const modulo = btn.dataset.modulo;
-        const tipo = document.querySelector(".tipo-btn.active").dataset.tipo;
-        mostrarTop(modulo, tipo);
-    });
-});
-
-// Botones para cambiar tipo
-document.querySelectorAll(".tipo-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-        document.querySelectorAll(".tipo-btn").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        const tipo = btn.dataset.tipo;
-        const modulo = document.querySelector(".modulo-btn.active").dataset.modulo;
-        mostrarTop(modulo, tipo);
-    });
-});
-
+// Esperar a que el DOM cargue
 document.addEventListener("DOMContentLoaded", () => {
-    // Cargar datos del top
+    // Cargar top
     cargarTop();
 
+    // Elementos del menú de filtros
     const menuBtn = document.getElementById("menu-filtros-btn");
     const menu = document.getElementById("menu-filtros");
     const overlay = document.getElementById("overlay-filtros");
@@ -81,25 +64,20 @@ document.addEventListener("DOMContentLoaded", () => {
     if (menuBtn && menu && overlay) {
         menuBtn.addEventListener("click", (e) => {
             e.stopPropagation();
-            menu.classList.toggle("oculto");
-            overlay.classList.toggle("oculto");
+            menu.classList.add("active");
+            overlay.classList.add("active");
         });
 
         overlay.addEventListener("click", () => {
-            menu.classList.add("oculto");
-            overlay.classList.add("oculto");
+            menu.classList.remove("active");
+            overlay.classList.remove("active");
         });
 
-
-        menu.addEventListener("click", (e) => {
-            e.stopPropagation();
-        });
-    } else {
-        // debug 
-        console.warn("menuBtn/menu/overlay no encontrados:", { menuBtn, menu, overlay });
+        // Evitar cerrar al click dentro del panel
+        menu.addEventListener("click", (e) => e.stopPropagation());
     }
 
-    // Botones para cambiar módulo
+    // Botones de módulos
     const moduloBtns = document.querySelectorAll(".modulo-btn");
     moduloBtns.forEach(btn => {
         btn.addEventListener("click", () => {
@@ -114,6 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // Botones de tipo (actual/histórico)
     const tipoBtns = document.querySelectorAll(".tipo-btn");
     tipoBtns.forEach(btn => {
         btn.addEventListener("click", () => {
@@ -128,4 +107,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // Mostrar nombre del usuario desde localStorage
+    const nombre = localStorage.getItem("usuario");
+    const elementoNombre = document.getElementById("nombre-usuarioh1");
+    if (nombre && elementoNombre) {
+        elementoNombre.textContent = nombre;
+        console.log("✅ Nombre mostrado correctamente:", nombre);
+    }
 });

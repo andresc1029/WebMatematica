@@ -66,16 +66,18 @@ async function cargarProblema() {
         // Mostrar opciones
         opcionesList.innerHTML = '';
         data.opciones.forEach(op => {
-            const li = document.createElement('li');
-            li.textContent = op;
-            li.className = 'opcion';
-            li.addEventListener('click', () => {
+            const btn = document.createElement('button');
+            btn.textContent = op;
+            btn.className = 'btn btn-hint opcion';
+            btn.addEventListener('click', () => {
+                // Deseleccionar todos
                 document.querySelectorAll('.opcion').forEach(el => el.classList.remove('seleccionada'));
-                li.classList.add('seleccionada');
+                // Seleccionar este
+                btn.classList.add('seleccionada');
                 opcionSeleccionada = op;
                 btnResponder.disabled = false;
             });
-            opcionesList.appendChild(li);
+            opcionesList.appendChild(btn);
         });
 
         actualizarRacha(data.rachaActual ?? 0, data.rachaMaxima ?? 0);
@@ -107,17 +109,10 @@ async function enviarRespuesta() {
 
         const data = await res.json();
 
+        // Mostrar resultado
         resultadoSection.classList.remove('hidden');
         resultadoTexto.textContent = data.correcta ? '¡Correcto! 🎉!' : 'Incorrecto 😢';
         resultadoTexto.style.color = data.correcta ? '#0d6efd' : '#ff4c4c';
-
-        // Ocultar el resultado después de 2 segundos
-        setTimeout(() => {
-            resultadoSection.classList.add('hidden');
-        }, 800);
-
-        // Actualizar racha
-        actualizarRacha(data.rachaActual, data.rachaMaxima);
 
         // Animación shake si falla
         if (!data.correcta) {
@@ -127,15 +122,15 @@ async function enviarRespuesta() {
             lanzarParticulas();
         }
 
-        // Preparar siguiente problema si acertó
-        if (data.correcta) {
-            setTimeout(() => {
-                cargarProblema();
-                btnResponder.disabled = true;
-            }, 800);
-        } else {
-            btnResponder.disabled = false;
-        }
+        // Actualizar racha
+        actualizarRacha(data.rachaActual, data.rachaMaxima);
+
+        // Siempre cargar siguiente problema, después de mostrar resultado brevemente
+        setTimeout(() => {
+            resultadoSection.classList.add('hidden');
+            cargarProblema();
+            btnResponder.disabled = true; // Desactivar hasta seleccionar nueva opción
+        }, 800);
 
     } catch (err) {
         console.error("Error al enviar respuesta:", err);
@@ -157,8 +152,10 @@ function lanzarParticulas() {
     }
 }
 
-btnObtener.addEventListener('click', cargarProblema);
+
 btnResponder.addEventListener('click', enviarRespuesta);
 
 
-cargarProblema();
+document.addEventListener('DOMContentLoaded', () => {
+    cargarProblema();
+});

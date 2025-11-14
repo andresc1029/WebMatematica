@@ -44,33 +44,50 @@
 
 @* Css *@
 
-<link rel="stylesheet" href="~/css/login.css" />
+<link rel="stylesheet" href="~/css/main.css" /> @* Tu CSS animado *@
 
-<div id="login-contenido" class="invisible">
-    <div class="login-card">
-        <h2>Iniciar Sesión</h2>
-        <form id="loginForm">
-            <div class="mb-3">
-                <input type="text" class="form-control" id="usuario" placeholder="Usuario" required>
-            </div>
-            <div class="mb-3">
-                <input type="password" class="form-control" id="contraseña" placeholder="Contraseña" required>
-            </div>
-            <button type="submit" class="btn btn-login">Entrar</button>
-
-            <div id="mensajeLogin" class="text-center mt-3" style="color:red;"></div>
-
-            <div class="text-center mt-3">
-                <a href="/RecuperarContraseña">¿Olvidaste tu contraseña?</a>
-            </div>
-
-            <div class="text-center mt-3">
-                <p class="decoracion">★━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━★</p>
-                <a href="/Registrar" class="btn btn-register">Registrar</a>
-            </div>
-        </form>
-    </div>
+<div class="background-container">
+    <div class="grid-background"></div>
+    <div class="floating-orb orb-1"></div>
+    <div class="floating-orb orb-2"></div>
+    <div class="floating-orb orb-3"></div>
 </div>
 
+<div class="main-container invisible" id="login-contenido">
+    <div class="sequence-card">
+        <div class="card-glow"></div>
+        <div class="sequence-content">
+            <div class="title-section">
+                <h1 class="page-title gradient-text">Iniciar Sesión</h1>
+                <p class="page-subtitle">Ingresa tus credenciales para continuar</p>
+            </div>
 
+            <form id="loginForm">
+                <div class="input-section">
+                    <div class="input-wrapper">
+                        <input type="text" id="usuario" placeholder="Usuario" required>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="password" id="contraseña" placeholder="Contraseña" required>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="btn btn-primary">Entrar</button>
+                </div>
+
+                <div id="mensajeLogin" class="text-center mt-3" style="color:#ef4444;"></div>
+
+                <div class="text-center mt-3">
+                    <a href="/RecuperarContraseña" class="btn btn-hint">¿Olvidaste tu contraseña?</a>
+                </div>
+
+                <div class="text-center mt-3">
+                    <p class="decoracion">★━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━★</p>
+                    <a href="/Registrar" class="btn btn-secondary">Registrar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <script src="~/js/login.js"></script>
