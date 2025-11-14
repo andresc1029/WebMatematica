@@ -123,3 +123,10 @@ main {
         display: block;
     }
 }
+
+/* Asegura que la navbar y elementos del layout estén siempre encima */
+header .navbar,
+.navbar {
+    position: relative;
+    z-index: 1400;
+}

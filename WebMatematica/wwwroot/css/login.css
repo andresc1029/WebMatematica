@@ -1,187 +1,245 @@
-﻿body {
-    height: 100vh;
+﻿
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: #0a0a23;
+    color: #ffffff;
+    min-height: 100vh;
+    overflow: hidden;
+}
+/*  FONDO ANIMADO  */
+.background-container {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.grid-background {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 64px 64px;
+}
+
+.floating-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.15;
+    animation: float-orb linear infinite;
+}
+
+.orb-1 {
+    width: 350px;
+    height: 350px;
+    background: #3b82f6;
+    top: 20%;
+    left: 10%;
+    animation-duration: 25s;
+}
+
+.orb-2 {
+    width: 280px;
+    height: 280px;
+    background: #8b5cf6;
+    top: 50%;
+    right: 15%;
+    animation-duration: 20s;
+    animation-delay: 7s;
+}
+
+.orb-3 {
+    width: 250px;
+    height: 250px;
+    background: #06b6d4;
+    bottom: 20%;
+    left: 50%;
+    animation-duration: 30s;
+    animation-delay: 14s;
+}
+
+@keyframes float-orb {
+    0%,100% {
+        transform: translate(0,0) rotate(0deg);
+    }
+
+    33% {
+        transform: translate(30px,-30px) rotate(120deg);
+    }
+
+    66% {
+        transform: translate(-20px,20px) rotate(240deg);
+    }
+}
+
+/*  CARD LOGIN CENTRADA  */
+.main-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(/Imagenes/descarga.jpg);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    z-index: 10;
+    position: relative;
+}
+
+.sequence-card {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 3rem;
+    position: relative;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 0 60px rgba(59,130,246,0.4);
     overflow: hidden;
-    color: #1f2937; /* gris oscuro moderno */
 }
 
-/* Tarjeta de login */
-.login-card {
-    background-color: #0a0a23; /* blanco limpio estilo Figma */
-    border-radius: 12px;
-    padding: 3rem 2rem;
-    width: 80%;
-    max-width: 450px;
-    margin: auto;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.12); /* sombra moderna */
-    color: #1f2937;
-    transition: transform 0.3s ease;
-    transform: scale(0.85);
+.card-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, #12234b, #0a0a23, #0a0a23, #fcfcfc);
+    background-size: 600% 600%;
+    animation: glow 20s linear infinite;
+    filter: blur(100px);
+    z-index: 0;
 }
 
-    .login-card h2 {
-        text-align: center;
-        margin-bottom: 2rem;
-        color: #ffffff; 
-    }
-
-    .login-card .decoracion {
-        display: block;
-        width: 100%;
-        text-align: center;
-        color: #9ca3af; /* gris suave */
-        margin: 1rem 0 0.5rem 0;
-        font-size: 0.85rem;
-        letter-spacing: 1px;
-    }
-
-/* Labels e inputs */
-.form-label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-    color: #374151; /* gris */
-}
-
-#contraseña, #usuario {
-    background-color: transparent;
-}
-
-/* Hover borde */
-.input:has(:hover) {
-    border-color: #3b82f6; /* azul tipo Figma */
-}
-
-.login-card p {
-    text-align: center;
-    color: #6b7280;
-    margin: 1rem 0 0.5rem 0;
-    font-size: 0.85rem;
-    letter-spacing: 1px;
-}
-
-/* Input moderno */
-.form-control {
-    background-color: #f9fafb; /* gris muy claro */
-    border: 1px solid #d1d5db;
-    color: #374151;
-    height: 50px;
-    padding: 0 1rem;
-    font-size: 1.05rem;
-    border-radius: 8px;
-    width: 100%;
-    box-sizing: border-box;
-    transition: 0.25s ease;
-}
-
-    .form-control:focus {
-        background-color: #ffffff;
-        border-color: #3b82f6; /* azul Figma */
-        box-shadow: 0 0 0 3px rgba(59,130,246,0.3); /* aura azul */
-    }
-
-/* Margen */
-.mb-3 {
-    margin-bottom: 1.8rem;
-}
-
-/* Botón Entrar */
-.btn-login {
-    display: block;
-    width: 100%;
-    background: #3b82f6; /* azul shadcn/figma */
-    color: #fff;
-    border: none;
-    transition: 0.25s ease;
-    height: 40px;
-    font-size: 1.02rem;
-    border-radius: 8px;
-    margin-bottom: 0.5rem;
-    cursor: pointer;
-}
-
-    .btn-login:hover {
-        background: #2563eb; /* azul más oscuro */
-    }
-
-/* Botón Registrar */
-.btn-register {
-    display: block;
-    width: 100%;
-    background: #e5e7eb; /* gris claro estilo secondary button */
-    color: #1f2937;
-    border: none;
-    padding: 0.55rem 0;
-    font-size: 1.02rem;
-    border-radius: 8px;
-    transition: 0.25s ease;
-    text-decoration: none;
-    margin-bottom: 0.2rem;
-    text-align: center;
-}
-
-    .btn-register:hover {
-        background: #d1d5db;
-    }
-
-/* Enlace Olvidaste contraseña */
-.btn-contraseña,
-.text-center a {
-    display: block;
-    margin: 0 auto;
-    text-align: center;
-    margin-top: 0.15rem;
-    font-size: 0.9rem;
-    color: #3b82f6; /* azul principal */
-}
-
-    .text-center a:hover {
-        color: #2563eb;
-        text-decoration: underline;
-    }
-
-/* Enlaces animación shake */
-@keyframes shake {
+@keyframes glow {
     0% {
-        transform: translateX(0);
+        background-position: 0% 50%;
     }
 
-    20% {
-        transform: translateX(-10px);
-    }
-
-    40% {
-        transform: translateX(10px);
-    }
-
-    60% {
-        transform: translateX(-10px);
-    }
-
-    80% {
-        transform: translateX(10px);
+    50% {
+        background-position: 100% 50%;
     }
 
     100% {
-        transform: translateX(0);
+        background-position: 0% 50%;
     }
 }
 
-.shake {
-    animation: shake 0.5s;
+.sequence-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
-/* Estilo de enlaces */
-a {
-    color: #3b82f6;
+/*  TITULO Y SUBTITULO  */
+.page-title {
+    font-size: 2rem;
+    text-align: center;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fade-in-up 1s ease forwards;
+}
+
+.page-subtitle {
+    text-align: center;
+    color: #9ca3af;
+    font-size: 1rem;
+}
+
+/*  INPUTS  */
+.input-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.input-wrapper input {
+
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+    .input-wrapper input:focus {
+        background: rgba(255,255,255,0.2);
+        box-shadow: 0 0 15px rgba(59,130,246,0.6);
+    }
+
+/*  BOTONES  */
+.button-group button,
+.btn-primary, .btn-secondary, .btn-hint {
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 0.75rem;
+    background: #3b82f6;
+    color: #fff;
+}
+
+    .btn-primary:hover {
+        background: #60a5fa;
+        box-shadow: 0 0 15px rgba(59,130,246,0.6);
+    }
+
+.btn-secondary {
+    padding: 0.5rem 6rem;
+    background: #8b5cf6;
+    color: #fff;
+    text-align: center;
+    display: inline-block;
     text-decoration: none;
 }
 
-    a:hover {
-        color: #2563eb;
-        text-decoration: underline;
+.btn-hint {
+    color: #06b6d4;
+    text-decoration: none;
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+/*  MENSAJE ERROR  */
+#mensajeLogin {
+    color: #ef4444;
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+/*  ANIMACIONES  */
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
     }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.text-center {
+    display: flex;
+    justify-content: center; 
+    gap: 1rem;
+    flex-direction: column; 
+    align-items: center; 
+}

@@ -3,23 +3,44 @@
 @{
     Layout = "_LayoutLogin";
 }
+
 <link rel="stylesheet" href="~/css/ReiniciarContraseñas/CodigoVerificacion.css" />
 
-<div class="container">
-    <div class="card">
-        <h1>Verificar código</h1>
-        <p>Hemos enviado un código de verificación a tu correo electrónico. Ingresa el código a continuación para continuar con la recuperación de tu cuenta.</p>
+<!-- Fondo animado -->
+<div class="background-container">
+    <div class="grid-background"></div>
+    <div class="floating-orb orb-1"></div>
+    <div class="floating-orb orb-2"></div>
+    <div class="floating-orb orb-3"></div>
+</div>
 
-        <form id="verifyForm">
-            <div class="form-group">
-                <label for="code">Código de verificación</label>
-                <input type="text" id="code" name="code" placeholder="Ingresa el código recibido" required>
-            </div>
+<!-- Contenido centrado -->
+<div class="main-container">
+    <div class="verify-card">
+        <div class="card-glow"></div>
 
-            <button type="submit" class="btn">Verificar</button>
-        </form>
+        <div class="verify-content">
+            <h2 class="title">Verificar código</h2>
+            <p class="subtitle">
+                Hemos enviado un código de verificación a tu correo electrónico.<br>
+                Ingrésalo para continuar.
+            </p>
 
-        <p class="note">¿No recibiste el código? <a href="recover.html">Reenviar</a></p>
+            <form id="verifyForm">
+                <div class="input-container">
+                    <input type="text" id="code" name="code" placeholder="Código de verificación" required />
+                </div>
+
+                <button type="submit" class="btn-primary">Verificar</button>
+            </form>
+
+            <p class="note">
+                ¿No recibiste el código?
+                <a href="#" class="btn-hint">Reenviar</a>
+            </p>
+
+            <div id="mensajeCodigo" class="message-box"></div>
+        </div>
     </div>
 </div>
 

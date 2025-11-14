@@ -209,7 +209,7 @@ body {
 }
 
 .stat-item {
-    display: flex;
+    text-align: center;
     align-items: center;
     gap: 1rem;
     padding: 1.25rem;

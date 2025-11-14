@@ -6,20 +6,36 @@
 
 <link rel="stylesheet" href="~/css/ReiniciarContraseñas/recuperarContrasena.css" />
 
-<div class="container">
-    <div class="card carta">
-        <h2>Recuperación de Contraseña</h2>
-        <p>Introduce tu correo electrónico registrado y te enviaremos un código de recuperación. Este código será válido por 15 minutos.</p>
+<!-- Fondo animado -->
+<div class="background-container">
+    <div class="grid-background"></div>
+    <div class="floating-orb orb-1"></div>
+    <div class="floating-orb orb-2"></div>
+    <div class="floating-orb orb-3"></div>
+</div>
+
+<!-- Card centrada -->
+<div class="main-container">
+    <div class="recover-card">
+        <div class="card-glow"></div>
+
+        <div class="recover-content">
+            <h2 class="title">Recuperación de Contraseña</h2>
+            <p class="subtitle">
+                Ingresa tu correo electrónico registrado.<br>
+                Te enviaremos un código válido por <strong>15 minutos</strong>.
+            </p>
 
             <form id="recoverForm">
-                <input type="email" id="email" placeholder="Ingresa tu correo" required />
-                <button type="submit" class="btn">Enviar código</button>
+                <div class="input-container">
+                    <input type="email" id="email" placeholder="Correo electrónico" required />
+                </div>
+
+                <button type="submit" class="btn-primary">Enviar código</button>
             </form>
 
-            <div id="messageBox" style="margin-bottom: 15px; opacity:0; transition: opacity 0.5s;"></div>
-
-
-        <p class="mensaje" id="mensaje"></p>
+            <div id="messageBox" class="message-box"></div>
+        </div>
     </div>
 </div>
 
