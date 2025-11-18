@@ -1,0 +1,93 @@
+﻿@page "/Perfil"
+@model WebMatematica.Pages.PerfilUsuarioC.PerfilUsuarioModel
+@{
+    ViewData["Title"] = "Perfil de Usuario";
+}
+
+<link rel="stylesheet" href="~/css/PerfilDeUsuario/PefilUsuario.css" />
+
+<div class="background-container">
+    <div class="grid-background"></div>
+    <div class="floating-orb orb-1"></div>
+    <div class="floating-orb orb-2"></div>
+    <div class="floating-orb orb-3"></div>
+</div>
+
+<div class="perfil-layout">
+
+    <aside class="sidebar-perfil" style="margin-right: 70px;">
+        <div class="usuario-header">
+            <div class="avatar"></div>
+            <div class="usuario-info">
+                <h1 id="nombre-usuarioh1">Cargando...</h1>
+                <p class="descripcion">...</p>
+            </div>
+        </div>
+
+        <div class="estadisticas">
+            <h3>Estadísticas</h3>
+            <ul>
+                <li><strong>Nivel:</strong> Pronto...</li>
+                <li><strong>Racha acomulada:</strong> Pronto...</li>
+                <li><strong>Puntaje total:</strong> Pronto...</li>
+            </ul>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <section class="top-section" style=" margin-right: -120px;">
+            <h2>Top global</h2>
+
+            <button id="menu-filtros-btn" class="menu-filtros-btn">⚙️ Filtros</button>
+
+            <div class="tabla-top">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Puesto</th>
+                            <th>Usuario</th>
+                            <th>Racha</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-top-body">
+                        <tr><td></td><td>Cargando...</td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="overlay-filtros" class="overlay oculto"></div>
+
+            <!--  Menú desplegable oculto -->
+            <div id="menu-filtros" class="menu-filtros oculto">
+                <div class="modulo-selector">
+                    <button class="modulo-btn active" data-modulo="multiplicaciones" style="margin-bottom: 10px;">Secuencias Numéricas</button>
+                    <button class="modulo-btn" data-modulo="condicionales" style="margin-bottom: 10px;">Problemas con Condiciones</button>
+                    <button class="modulo-btn" data-modulo="razonamiento">Abstracción</button>
+                </div>
+
+                <hr>
+
+                <div class="tipo-selector">
+                    <button class="tipo-btn active" data-tipo="actual">Top Actual</button>
+                    <button class="tipo-btn" data-tipo="historico">Top Histórico</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</div>
+<script>
+    window.addEventListener("load", () => {
+        const nombre = localStorage.getItem("usuario");
+        const elemento = document.getElementById("nombre-usuarioh1");
+
+        if (nombre && elemento) {
+            elemento.textContent = nombre;
+            console.log("✅ Nombre mostrado correctamente:", nombre);
+        } else {
+            console.warn("⚠️ No se pudo mostrar el nombre. nombre:", nombre, "elemento:", elemento);
+        }
+    });
+</script>
+
+<script src="~/js/JsPerfilUsuario/Perfil.js"></script>

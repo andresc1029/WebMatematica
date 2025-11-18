@@ -1,0 +1,60 @@
+﻿@{
+    var isIndex = ViewData["Title"]?.ToString() == "Inicio";
+}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"]  Inicio </title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="nav-container">
+            <a class="logo" asp-area="" asp-page="/PaginaPricipalC/PaginaPrincipal">
+                Hola, <span id="nombre-usuario">Invitado</span></a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a asp-page="/PaginaPricipalC/PaginaPrincipal">Inicio</a></li>
+                    <li><a asp-page="/PerfilUsuarioC/Perfil">Perfil</a></li>
+                    <li><a id="CerrarSesion" asp-page="/CerrarSesion">Cerrar Sesión</a></li>
+                </ul>
+                <button class="nav-toggle" aria-label="Abrir menú">
+                    ☰
+                </button>
+            </nav>
+        </div>
+    </header>
+
+
+    <main role="main" class="container">
+        @RenderBody()
+    </main>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Obtener nombre desde localStorage
+            const nombre = localStorage.getItem("usuario");
+            if(nombre){
+                document.getElementById("nombre-usuario").textContent = nombre;
+            }
+        });
+    </script>
+</body>
+
+<script src="~/js/InicioSesion/CerrarSesion.js"></script>
+</html>
+
+
+
+

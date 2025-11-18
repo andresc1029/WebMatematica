@@ -1,0 +1,101 @@
+﻿/* ===== Layout general ===== */
+body {
+    font-family: 'Inter', 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* Card */
+.min-vh-100 {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+/* ===== Card ===== */
+.card-custom {
+    border-radius: 15px;
+    max-width: 450px;
+    width: 100%;
+    padding: 2.5rem;
+    margin-top: -80px;
+    transform: scale(0.79); /* 85% de su tamaño */
+    transform-origin: center;
+}
+
+/* Sombra suave */
+.shadow-lg {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+/* ===== Texto operación ===== */
+.operation-text {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+/* ===== Textos de feedback ===== */
+.info-text {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #ddd;
+}
+
+.message-text {
+    min-height: 30px;
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+/* ===== Input ===== */
+.form-control {
+    border-radius: 10px;
+    border: none;
+    padding: 12px;
+    font-size: 1.1rem;
+    text-align: center;
+    color: #fff;
+}
+
+    .form-control:focus {
+        outline: none;
+
+        background: #2c2c2c;
+        color: #fff;
+    }
+
+/* ===== Botones ===== */
+.btn {
+    border-radius: 10px;
+    font-size: 1.1rem;
+    padding: 12px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border: none;
+    color: #fff;
+}
+
+    .btn-primary:hover {
+        background-color: #0b5ed7;
+    }
+
+.btn-outline-warning {
+    border: 2px solid #ffc107;
+    color: #ffc107;
+    background: transparent;
+}
+
+    .btn-outline-warning:hover {
+        background: #ffc107;
+        color: #111;
+    }

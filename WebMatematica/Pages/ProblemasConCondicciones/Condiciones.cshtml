@@ -1,0 +1,96 @@
+﻿@page "/Condiciones"
+@model WebMatematica.Pages.ProblemasConCondicciones.CondicionesModel
+@{
+}
+
+<link rel="stylesheet" href="~/css/CssCondicionesProblemas/Condiciones.css" />
+
+<!-- FONDO ANIMADO -->
+<div class="background-container">
+    <div class="grid-background"></div>
+    <div class="floating-orb orb-1"></div>
+    <div class="floating-orb orb-2"></div>
+    <div class="floating-orb orb-3"></div>
+</div>
+<div id="mouse-light" class="mouse-light"></div>
+
+<!-- CONTENEDOR PRINCIPAL -->
+<div class="main-container">
+
+    <!-- HEADER -->
+    <div class="header-section">
+        <a href="/" class="back-button">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m15 18-6-6 6-6" />
+            </svg>
+            <span>Volver al inicio</span>
+        </a>
+        <div class="level-badge" id="levelBadge">Nivel 1</div>
+    </div>
+
+    <!-- TÍTULO -->
+    <div class="title-section">
+        <div class="title-badge">
+            <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+            </svg>
+            <span>Ejercicios de Condicionales</span>
+        </div>
+        <h1 class="page-title">Practica <span class="gradient-text">Tu Lógica</span></h1>
+        <p class="page-subtitle">Presiona el botón y resuelve el problema correctamente</p>
+    </div>
+
+    <!--  RACHA -->
+    <div class="stats-panel">
+        <div class="stat-item">🔥 Racha Actual: <span id="rachaActual">0</span></div>
+        <div class="stat-item">🏆 Racha Máxima: <span id="rachaMaxima">0</span></div>
+    </div>
+
+    <!-- ÁREA DE PROBLEMA -->
+    <section class="game-container">
+        <div class="sequence-card">
+            <div class="card-glow"></div>
+            <div class="sequence-content">
+
+                <div id="enunciado" class="enunciado">Presiona el botón para obtener un problema</div>
+
+                <!-- Opciones como botones -->
+                <div id="opciones" class="opciones-list"></div>
+
+                <!-- Botones para enviar o cargar problema -->
+                <div class="button-group">
+  @*                   <button id="btnObtener" class="btn btn-secondary">Obtener Problema</button> *@
+                    <button id="btnResponder" class="btn btn-primary" disabled>Enviar Respuesta</button>
+                </div>
+
+                <!-- Resultado -->
+                <section id="resultadoSection" class="resultado-section hidden">
+                    <div id="resultadoContainer">
+                        <p id="resultadoTexto"></p>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROGRESO -->
+    @* <div class="progress-section">
+        <div class="progress-header">
+            <span class="progress-label">Progreso de sesión</span>
+            <span class="progress-percentage" id="progressPercentage">0%</span>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-stats">
+            <span>Precisión: <strong id="precision">0%</strong></span>
+            <span>Total: <strong id="totalRespuestas">0</strong></span>
+        </div>
+    </div> *@
+
+</div>
+
+<div id="confetti-container"></div>
+
+<script src="/js/JsProblemasCondiciones/CondicionesNN.js"></script>

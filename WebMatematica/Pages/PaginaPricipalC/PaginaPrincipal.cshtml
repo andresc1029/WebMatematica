@@ -1,0 +1,249 @@
+﻿@page "/PaginaPrincipal"
+@using WebMatematica.Pages.Multiplicaciones
+@model IndexModel
+@{
+    ViewData["Title"] = "";
+}
+
+<link href="~/css/PaginaPrincipal.css" rel="stylesheet" />
+
+<!-- Fondo animado con grid y orbes -->
+<div class="background-container">
+    <div class="grid-background"></div>
+    <div class="floating-orb orb-1"></div>
+    <div class="floating-orb orb-2"></div>
+    <div class="floating-orb orb-3"></div>
+</div>
+
+<!-- Luz que sigue el mouse -->
+<div id="mouse-light" class="mouse-light"></div>
+
+<!-- Hero Section -->
+<section id="inicio" class="hero-section">
+    <div class="container">
+        <!-- Badge flotante -->
+        <div class="floating-badge">
+            <svg class="icon-sparkle" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 3v18m9-9H3m16.5-6.5L4.5 19.5m0-15l15 15" />
+            </svg>
+            <span>:) </span>
+        </div>
+
+        <!-- Título principal -->
+        <div class="hero-title-container">
+            <h1 class="hero-title">
+                <span class="title-line-1 animate-slide-up">La</span>
+                <span class="title-line-2 animate-gradient-text">Cúpula</span>
+            </h1>
+
+            <p class="hero-subtitle animate-fade-in-1">
+                Desafía tu mente, domina la lógica y las matemáticas
+            </p>
+
+            <p class="hero-description animate-fade-in-2">
+                Bienvenido a la plataforma para potenciar tu
+                <span class="highlight">razonamiento lógico-matemático</span>.
+                Encuentra ejercicios, desafíos y recursos para mejorar tus habilidades.
+            </p>
+        </div>
+
+        <!-- Feature Badges -->
+        <div class="feature-badges animate-fade-in-3">
+            <div class="feature-badge">
+                <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                </svg>
+                <span>Ejercicios interactivos</span>
+            </div>
+            <div class="feature-badge">
+                <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z" />
+                </svg>
+                <span>Retos de lógica y razonamiento</span>
+            </div>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="cta-buttons animate-fade-in-4">
+            <a href="/Multiplicaciones" class="btn btn-primary">
+                <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <path d="M3 9h18M9 21V9" />
+                </svg>
+                Multiplicaciones
+            </a>
+            <a href="#logica" class="btn btn-secondary btn-scroll">
+                <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z" />
+                </svg>
+                Lógica
+            </a>
+            <a href="/Pronto" class="btn btn-gradient">
+                <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 3v18m9-9H3m16.5-6.5L4.5 19.5m0-15l15 15" />
+                </svg>
+                Más ejercicios
+            </a>
+        </div>
+
+        <!-- Scroll Indicador -->
+        <div class="scroll-indicator">
+            <a href="#logica" class="scroll-arrow btn-scroll">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="m6 9 6 6 6-6" />
+                </svg>
+            </a>
+        </div>
+    </div>
+
+</section>
+
+<!-- Logic Exercises Section -->
+<section id="logica" class="logic-section">
+    <div class="container">
+        <!-- Section Header -->
+        <div class="section-header">
+            <div class="section-badge">
+                <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <circle cx="12" cy="12" r="6" />
+                    <circle cx="12" cy="12" r="2" />
+                </svg>
+                <span>Mejora tus habilidades</span>
+            </div>
+
+            <h2 class="section-title">
+                Ejercicios de
+                <span class="gradient-text">Lógica</span>
+            </h2>
+
+            <p class="section-subtitle">
+                Pon a prueba tu razonamiento, encuentra patrones
+            </p>
+
+            <p class="section-description">
+                Aquí encontrarás diferentes tipos de ejercicios para mejorar tu lógica y habilidades matemáticas.
+            </p>
+        </div>
+
+        <!-- Exercise Cards Grid -->
+        <div class="exercise-grid">
+            <!-- Card 1: Secuencias -->
+            <div class="exercise-card" data-color="blue">
+                <div class="card-glow"></div>
+                <a href="/SecuenciasNumericas" class="card-content">
+                    <div class="card-icon icon-blue">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                        </svg>
+                    </div>
+
+                    <h3 class="card-title">Secuencias y patrones</h3>
+                    <p class="card-description">
+                        Identifica patrones numéricos y completa secuencias lógicas para desarrollar tu pensamiento analítico.
+                    </p>
+
+                    <div class="card-arrow">
+                        <span>Comenzar</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="m9 5 7 7-7 7" />
+                        </svg>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Card 2: Condiciones -->
+            <div class="exercise-card" data-color="purple">
+                <div class="card-glow"></div>
+                <a href="/Condiciones" class="card-content">
+                    <div class="card-icon icon-purple">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M12 2v6m0 4v10M8 11h8M9 7h1m4 0h1M8 21h8a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3H8a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3z" />
+                        </svg>
+                    </div>
+
+                    <h3 class="card-title">Problemas con condiciones</h3>
+                    <p class="card-description">
+                        Resuelve problemas complejos aplicando condiciones y restricciones específicas.
+                    </p>
+
+                    <div class="card-arrow">
+                        <span>Comenzar</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="m9 5 7 7-7 7" />
+                        </svg>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Card 3: Patrones Visuales -->
+            <div class="exercise-card" data-color="orange">
+                <div class="card-glow"></div>
+                <a href="/abstraccion" class="card-content">
+                    <div class="card-icon icon-orange">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                            <circle cx="12" cy="12" r="3" />
+                        </svg>
+                    </div>
+
+                    <h3 class="card-title">Retos visuales</h3>
+                    <p class="card-description">
+                        Entrena tu percepción visual y reconocimiento de patrones con desafíos interactivos.
+                    </p>
+
+                    <div class="card-arrow">
+                        <span>Comenzar</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="m9 5 7 7-7 7" />
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon icon-blue">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
+                        <path d="M9 18h6m-7 4h8m-4-6v10" />
+                    </svg>
+                </div>
+                <h3 class="stat-number">100+</h3>
+                <p class="stat-label">Ejercicios disponibles</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon icon-purple">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7" />
+                        <rect x="14" y="3" width="7" height="7" />
+                        <rect x="14" y="14" width="7" height="7" />
+                        <rect x="3" y="14" width="7" height="7" />
+                    </svg>
+                </div>
+                <h3 class="stat-number">3</h3>
+                <p class="stat-label">Modulos</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon icon-orange">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <circle cx="12" cy="12" r="6" />
+                        <circle cx="12" cy="12" r="2" />
+                    </svg>
+                </div>
+                <h3 class="stat-number">∞</h3>
+                <p class="stat-label">Posibilidades de aprender</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer Wave -->
+<div class="footer-wave"></div>
+
+<script src="script.js"></script>

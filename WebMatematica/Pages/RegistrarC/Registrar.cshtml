@@ -1,0 +1,54 @@
+﻿@page "/Registrar"
+@model WebMatematica.Pages.RegistrarModel
+@{
+    Layout = "_LayoutLogin";
+}
+
+<link rel="stylesheet" href="~/css/registrar.css" />
+
+<!-- Fondo animado -->
+<div class="background-container">
+    <div class="grid-background"></div>
+    <div class="floating-orb orb-1"></div>
+    <div class="floating-orb orb-2"></div>
+    <div class="floating-orb orb-3"></div>
+</div>
+
+
+<div class="main-container">
+    <div class="register-card">
+    
+        <div class="card-glow"></div>
+
+        <div class="register-content">
+            <h2 class="page-title">Registro</h2>
+            <p class="page-subtitle">Crea tu cuenta para acceder</p>
+
+            <form id="registroForm">
+                <div class="input-container">
+                    <input type="text" id="usuario" placeholder="Usuario" required />
+                </div>
+
+                <div class="input-container">
+                    <input type="password" id="contrasena" placeholder="Contraseña" required />
+                    <button type="button" class="toggle-password" data-target="contrasena">👁</button>
+                </div>
+
+                <div class="input-container">
+                    <input type="password" id="confirmarContrasena" placeholder="Confirmar contraseña" required />
+                    <button type="button" class="toggle-password" data-target="confirmarContrasena">👁</button>
+                </div>
+
+                <div class="input-container">
+                    <input type="email" id="correo" placeholder="Correo (opcional)" />
+                </div>
+
+                <button type="submit" class="btn-register">Registrarse</button>
+            </form>
+
+            <div id="mensajeRegistro"></div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/registrar.js"></script>

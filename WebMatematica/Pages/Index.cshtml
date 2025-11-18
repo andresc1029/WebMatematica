@@ -1,0 +1,93 @@
+﻿@page
+@{
+    Layout = "_LayoutLogin";
+}
+<style>
+    .invisible {
+        visibility: hidden;
+        opacity: 0;
+    }
+</style>
+
+
+<script>
+    // Validar token 
+    const token = localStorage.getItem("token");
+
+    if (token) {
+        // redirigir sin mostrar nada
+        window.location.replace("/PaginaPrincipal");
+    } else {
+        //  mostrar contenido
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("login-contenido").classList.remove("invisible");
+        });
+    }
+
+    // decodificar JWT
+    function parseJwt(token) {
+        try {
+            const base64Url = token.split(".")[1];
+            const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+            const jsonPayload = decodeURIComponent(
+                atob(base64)
+                    .split("")
+                    .map(c => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2))
+                    .join("")
+            );
+            return JSON.parse(jsonPayload);
+        } catch (e) {
+            return null;
+        }
+    }
+</script>
+
+@* Css *@
+
+<link rel="stylesheet" href="~/css/login.css" /> 
+
+<div class="background-container">
+    <div class="grid-background"></div>
+    <div class="floating-orb orb-1"></div>
+    <div class="floating-orb orb-2"></div>
+    <div class="floating-orb orb-3"></div>
+</div>
+
+<div class="main-container invisible" id="login-contenido">
+    <div class="sequence-card">
+        <div class="card-glow"></div>
+        <div class="sequence-content">
+            <div class="title-section">
+                <h1 class="page-title gradient-text">Iniciar Sesión</h1>
+                <p class="page-subtitle">Ingresa tus credenciales para continuar</p>
+            </div>
+
+            <form id="loginForm">
+                <div class="input-section">
+                    <div class="input-wrapper">
+                        <input type="text" id="usuario" placeholder="Usuario" required>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="password" id="contraseña" placeholder="Contraseña" required>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="btn btn-primary" style="margin-bottom:20px; margin-top:20px;">Entrar</button>
+                </div>
+
+                <div id="mensajeLogin" class="text-center mt-3" style="color:#ef4444;"></div>
+
+                <div class="text-center mt-3">
+                    <a href="/RecuperarContraseña" class="btn btn-hint">¿Olvidaste tu contraseña?</a>
+                </div>
+
+                <div class="text-center mt-3">
+                    <p class="decoracion">★━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━★</p>
+                    <a href="/Registrar" class="btn btn-secondary">Registrar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="~/js/login.js"></script>

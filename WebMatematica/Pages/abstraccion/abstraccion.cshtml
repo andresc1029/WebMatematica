@@ -1,0 +1,62 @@
+﻿@page "/abstraccion"
+@model WebMatematica.Pages.abstraccion.abstraccionModel
+@{
+
+}
+<link rel="stylesheet" href="~/css/cssAbstraccion/Abs.css" />
+
+
+<div class="background-container">
+    <div class="grid-background"></div>
+    <div class="floating-orb orb-1"></div>
+    <div class="floating-orb orb-2"></div>
+    <div class="floating-orb orb-3"></div>
+</div>
+<div class="mouse-light" id="mouseLight"></div>
+
+<div class="main-container">
+
+    <!-- Header -->
+    <div class="header-section">
+        <a href="/" class="back-button">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m15 18-6-6 6-6" />
+            </svg>
+            <span>Volver al inicio</span>
+        </a>
+        <div class="level-badge" id="levelBadge">Nivel 1</div>
+    </div>
+
+    <!-- Título -->
+    <div class="title-section">
+        <div class="title-badge">Abstracción</div>
+        <h1 class="page-title gradient-text" id="preguntaTitulo">Pregunta....</h1>
+        <p class="page-subtitle" id="preguntaDescripcion">Descripción...</p>
+    </div>
+
+    <!-- Contenedor de juego -->
+    <div class="game-container">
+        <div class="sequence-card">
+            <div class="card-glow"></div>
+            <div class="sequence-content">
+                <img id="preguntaImagen" src="" alt="Imagen de la pregunta" style="display:block; max-width:100%; margin-bottom:1rem; border-radius:12px;">
+                <p class="enunciado" id="preguntaEnunciado"></p>
+                <ul class="opciones-list" id="opcionesList">
+                    <!-- Opciones se insertadas por JS -->
+                </ul>
+
+                <div class="input-section">
+                    <button class="btn btn-primary" id="enviarRespuesta">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resultado -->
+    <div class="resultado-container">
+        <div class="resultado hidden" id="resultadoMensaje"></div>
+    </div>
+
+</div>
+
+<script src="~/js/AbstracionJs/Abs.js"></script>

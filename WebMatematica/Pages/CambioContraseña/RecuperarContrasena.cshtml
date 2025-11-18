@@ -1,0 +1,42 @@
+﻿@page "/RecuperarContraseña"
+@model WebMatematica.Pages.RecuperarContrasenaModel
+@{
+    Layout = "_LayoutLogin";
+}
+
+<link rel="stylesheet" href="~/css/ReiniciarContraseñas/recuperarContrasena.css" />
+
+<!-- Fondo animado -->
+<div class="background-container">
+    <div class="grid-background"></div>
+    <div class="floating-orb orb-1"></div>
+    <div class="floating-orb orb-2"></div>
+    <div class="floating-orb orb-3"></div>
+</div>
+
+<!-- Card centrada -->
+<div class="main-container">
+    <div class="recover-card">
+        <div class="card-glow"></div>
+
+        <div class="recover-content">
+            <h2 class="title">Recuperación de Contraseña</h2>
+            <p class="subtitle">
+                Ingresa tu correo electrónico registrado.<br>
+                Te enviaremos un código válido por <strong>15 minutos</strong>.
+            </p>
+
+            <form id="recoverForm">
+                <div class="input-container">
+                    <input type="email" id="email" placeholder="Correo electrónico" required />
+                </div>
+
+                <button type="submit" class="btn-primary">Enviar código</button>
+            </form>
+
+            <div id="messageBox" class="message-box"></div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/CambiarContraseña/VerificacionContraseña.js"></script>

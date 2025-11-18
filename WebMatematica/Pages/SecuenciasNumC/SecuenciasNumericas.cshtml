@@ -1,0 +1,94 @@
+﻿@page "/SecuenciasNumericas"
+@model WebMatematica.Pages.SecuenciasNumericasModel
+@{
+}
+
+
+<link rel="stylesheet" href="~/css/SecuenciasNumericas.css" />
+
+<div class="background-container">
+    <div class="grid-background"></div>
+    <div class="floating-orb orb-1"></div>
+    <div class="floating-orb orb-2"></div>
+    <div class="floating-orb orb-3"></div>
+</div>
+
+<div id="mouse-light" class="mouse-light"></div>
+
+<div class="main-container">
+
+    <!-- Header -->
+    <div class="header-section">
+        <a href="/" class="back-button">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m15 18-6-6 6-6" />
+            </svg>
+            <span>Volver al inicio</span>
+        </a>
+        <div class="level-badge" id="levelBadge">Nivel 1</div>
+    </div>
+
+    <!-- Título -->
+    <div class="title-section">
+        <div class="title-badge">
+            <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+            </svg>
+            <span>Encuentra el patrón</span>
+        </div>
+        <h1 class="page-title">Secuencias <span class="gradient-text">Numéricas</span></h1>
+        <p class="page-subtitle">Completa la secuencia identificando el patrón correcto</p>
+    </div>
+
+    <!-- Estadísticas -->
+    <div class="stats-panel">
+        <div class="stat-item racha-container">
+            Racha: <span id="rachaActual">0</span>
+        </div>
+    </div>
+
+    <!-- Contenedor de la secuencia -->
+    <div class="sequence-card" style="
+         font-size: 50px;">
+        <div class="card-glow"></div>
+        <div class="sequence-content">
+            <!-- Secuencia limpia para JS -->
+            <div class="secuencia-container" id="secuencia"></div>
+        </div>
+    </div>
+
+    <!-- Input y botón -->
+    <div class="input-section">
+        <div class="input-wrapper">
+            <input type="number" id="respuestaUsuario" placeholder="Tu respuesta">
+            <button class="btn btn-primary" id="enviar" style="margin-top: 20px;"> <svg width="20" height="20" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2"> <polyline points="20 6 9 17 4 12" />
+                </svg> <span>Verificar</span> </button>
+        </div>
+    </div>
+
+    <!-- Resultado -->
+    <div class="resultado-container">
+        <div class="resultado" id="resultado"></div>
+    </div>
+
+    <!-- Progreso -->
+    @* <div class="progress-section">
+        <div class="progress-header">
+            <span class="progress-label">Progreso de sesión</span>
+            <span class="progress-percentage" id="progressPercentage">0%</span>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-stats">
+            <span>Precisión: <strong id="precision">0%</strong></span>
+            <span>Total: <strong id="totalRespuestas">0</strong></span>
+        </div>
+    </div> *@
+
+</div>
+
+<div id="confetti-container"></div>
+
+<script src="~/js/SecuenciasNumericas.js"></script>
