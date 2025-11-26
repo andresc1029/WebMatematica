@@ -5,7 +5,6 @@
 }
 <link rel="stylesheet" href="~/css/cssAbstraccion/Abs.css" />
 
-
 <div class="background-container">
     <div class="grid-background"></div>
     <div class="floating-orb orb-1"></div>
@@ -42,10 +41,16 @@
                 <img id="preguntaImagen" src="" alt="Imagen de la pregunta" style="display:block; max-width:100%; margin-bottom:1rem; border-radius:12px;">
                 <p class="enunciado" id="preguntaEnunciado"></p>
                 <ul class="opciones-list" id="opcionesList">
-                    <!-- Opciones se insertadas por JS -->
+                    <!-- Opciones se insertarán por JS -->
                 </ul>
 
                 <div class="input-section">
+                    <!-- Este input es esperado por tu JS -->
+                    <input type="hidden" id="respuestaUsuario" />
+
+                    <!-- Este badge es esperado por tu JS -->
+                    <p id="rachaBadge" style="display:none"></p>
+
                     <button class="btn btn-primary" id="enviarRespuesta">Enviar</button>
                 </div>
             </div>

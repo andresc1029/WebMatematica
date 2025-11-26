@@ -95,9 +95,10 @@ async function enviarRespuesta() {
     const body = {
         UsuarioId: usuarioId,
         Modo: modo,
-        PreguntaId: preguntaActual.preguntaId,
+        PreguntaId: preguntaActual.id, 
         RespuestaUsuario: opcionSeleccionada
     };
+
 
     try {
         const res = await fetch(`${apiBase}/api/ControladorAbstraccion/responder`, {
@@ -128,7 +129,6 @@ async function enviarRespuesta() {
         btnResponder.disabled = false;
     }
 }
-
 // Eventos
 btnResponder.addEventListener('click', () => {
     if (!opcionSeleccionada) return;
